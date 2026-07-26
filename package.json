@@ -2,7 +2,7 @@
   "name": "naiyapudai-growth-studio",
   "version": "1.0.0",
   "private": true,
-  "description": "Digital growth studio site for Tamil Nadu — bilingual (EN + Tamil), SEO-first, high-performance marketing site built with TanStack Start.",
+  "description": "Naiyapudai company site — Tamil Nadu digital growth studio. First client: Total Fitness Studio (web + local SEO + Google Maps).",
   "homepage": "https://naiyapudai.vercel.app/",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
     "url": "https://github.com/sairambn/naiyapudai-growth-studio/issues"
   },
   "author": "Sairam BN <bnsairam14@gmail.com>",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "sideEffects": false,
   "type": "module",
   "scripts": {
