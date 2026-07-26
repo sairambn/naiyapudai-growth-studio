@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowUpRight, ArrowLeft } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ExternalLink, MapPin } from "lucide-react";
 import { CASES } from "./work";
 import { WhatsAppIcon } from "../components/site-nav";
 
@@ -11,16 +11,24 @@ export const Route = createFileRoute("/work/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Case study not found — Naiyapudai" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [
+          { title: "Case study not found — Naiyapudai" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
     }
     const c = loaderData;
-    const title = `${c.client} — ${c.metric} ${c.metricLabel} | Naiyapudai`;
+    const title = `${c.client} — Website, Local SEO & Google Maps | Naiyapudai`;
     return {
       meta: [
         { title },
         { name: "description", content: `${c.client}: ${c.challenge}` },
         { property: "og:title", content: title },
-        { property: "og:description", content: `${c.metric} ${c.metricLabel}. How Naiyapudai delivered it.` },
+        {
+          property: "og:description",
+          content: `${c.metric} ${c.metricLabel}. How Naiyapudai delivered website + SEO + Maps.`,
+        },
         { property: "og:url", content: `/work/${c.slug}` },
         { property: "og:type", content: "article" },
       ],
@@ -36,7 +44,10 @@ function CaseStudy() {
     <>
       <section className="pt-12 pb-8">
         <div className="container-page">
-          <Link to="/work" className="text-sm text-muted-foreground hover:text-cream inline-flex items-center gap-2 transition-colors">
+          <Link
+            to="/work"
+            className="text-sm text-muted-foreground hover:text-cream inline-flex items-center gap-2 transition-colors"
+          >
             <ArrowLeft size={14} /> All case studies
           </Link>
         </div>
@@ -49,14 +60,27 @@ function CaseStudy() {
           <p className="mt-6 text-xl md:text-2xl font-display leading-tight text-muted-foreground">
             {c.metric} <span className="text-cream">{c.metricLabel}</span>.
           </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {"liveUrl" in c && c.liveUrl && (
+              <a href={c.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                Live website <ExternalLink size={14} />
+              </a>
+            )}
+            {"mapsUrl" in c && c.mapsUrl && (
+              <a href={c.mapsUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                <MapPin size={14} /> Google Maps
+              </a>
+            )}
+          </div>
         </div>
       </section>
 
       <section>
         <div className="container-page">
           <div className="aspect-[21/9] rounded-2xl bg-gradient-to-br from-surface-2 to-background grain-bg relative overflow-hidden border border-border">
-            <div className="absolute inset-0 grid place-items-center text-muted-foreground text-sm">
-              Case study visual
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-muted-foreground text-sm p-6 text-center">
+              <span className="font-display text-3xl text-cream/80">Total Fitness Studio</span>
+              <span>Chromepet · Hasthinapuram · Conversion site + local SEO + Maps</span>
             </div>
           </div>
         </div>
@@ -74,27 +98,35 @@ function CaseStudy() {
           </div>
 
           <div>
-            <span className="protocol-num">THE NUMBERS</span>
-            <div className="mt-8 grid sm:grid-cols-3 gap-4">
-              {[
-                { k: c.metric, v: c.metricLabel },
-                { k: "Top 3", v: "Google rank for target keywords" },
-                { k: "< 1.8s", v: "LCP on mobile 4G" },
-              ].map((m) => (
+            <span className="protocol-num">WHAT WE SHIPPED</span>
+            <div className="mt-8 grid sm:grid-cols-2 gap-4">
+              {("results" in c && c.results ? c.results : []).map((m) => (
                 <div key={m.v} className="card-elite p-6">
-                  <div className="font-display text-4xl text-gold">{m.k}</div>
+                  <div className="font-display text-3xl text-gold">{m.k}</div>
                   <div className="mt-2 text-sm text-muted-foreground">{m.v}</div>
                 </div>
               ))}
             </div>
           </div>
 
+          <div>
+            <span className="protocol-num">SEO & MAPS FOCUS</span>
+            <ul className="mt-5 space-y-3 text-lg text-cream/90 leading-relaxed">
+              <li>Schema.org <code className="text-gold text-base">GymAndFitnessClub</code> + geo coordinates</li>
+              <li>Local keywords: Chromepet, Hasthinapuram, Chitlapakkam, unisex gym</li>
+              <li>Google Business Profile alignment (address, hours, categories, Maps link)</li>
+              <li>Mobile-first CTAs: <code className="text-gold text-base">tel:</code> and WhatsApp deep links</li>
+              <li>Core Web Vitals–oriented SSR stack (TanStack Start + Nitro on Vercel)</li>
+            </ul>
+          </div>
+
           <figure className="border-l-2 border-gold pl-6">
             <blockquote className="font-display text-2xl leading-snug text-cream">
-              "The most transparent agency we've worked with. They act like partners, not vendors."
+              "First client engagement for Naiyapudai — website, local SEO, and Google Maps under one
+              roof so the gym can convert searchers into calls and trials."
             </blockquote>
             <figcaption className="mt-4 text-sm text-muted-foreground">
-              Client — {c.client}
+              Naiyapudai · Total Fitness Studio engagement
             </figcaption>
           </figure>
         </div>
@@ -104,10 +136,15 @@ function CaseStudy() {
         <div className="container-page">
           <div className="card-elite p-10 md:p-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <h2 className="h-section">Want a story like this?</h2>
-              <p className="mt-3 text-muted-foreground">Start with a free 30-minute audit on WhatsApp.</p>
+              <h2 className="h-section">Want the same for your business?</h2>
+              <p className="mt-3 text-muted-foreground">
+                Free 30-minute audit — site, Search, and Maps.
+              </p>
             </div>
-            <a href="https://wa.me/919999999999" className="btn-accent">
+            <a
+              href="https://wa.me/917603976686?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
+              className="btn-accent"
+            >
               <WhatsAppIcon /> Start on WhatsApp <ArrowUpRight size={16} />
             </a>
           </div>
