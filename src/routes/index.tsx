@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Tamil Nadu digital growth studio. We build high-performance websites, rank them on Google Search & Maps, and run marketing that converts — for SMBs and local brands. First client: Total Fitness Studio Chromepet.",
+          "Tamil Nadu digital growth studio. We build high-performance websites, ranks them on Google Search & Maps, and run marketing that converts — for SMBs and local brands. First client: Total Fitness Studio Chromepet.",
       },
       {
         property: "og:title",
@@ -36,42 +36,53 @@ export const Route = createFileRoute("/")({
 function AnimatedCounter({
   to,
   suffix = "",
-  duration = 1600,
+  duration = 1400,
 }: {
   to: number;
   suffix?: string;
   duration?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [n, setN] = useState(0);
+  // Start at final value so SSR + first paint have correct width (no CLS).
+  // Animate only after the element is in view.
+  const [n, setN] = useState(to);
+  const animated = useRef(false);
+
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    let raf = 0;
+    if (!el || animated.current) return;
+
     const io = new IntersectionObserver(
       (entries) => {
-        if (entries[0]?.isIntersecting) {
-          const start = performance.now();
-          const step = (now: number) => {
-            const t = Math.min(1, (now - start) / duration);
-            const eased = 1 - Math.pow(1 - t, 3);
-            setN(Math.round(eased * to));
-            if (t < 1) raf = requestAnimationFrame(step);
-          };
-          raf = requestAnimationFrame(step);
-          io.disconnect();
-        }
+        if (!entries[0]?.isIntersecting || animated.current) return;
+        animated.current = true;
+        io.disconnect();
+
+        // Brief reset then ease up — container width is already reserved.
+        setN(0);
+        const start = performance.now();
+        let raf = 0;
+        const step = (now: number) => {
+          const t = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          setN(Math.round(eased * to));
+          if (t < 1) raf = requestAnimationFrame(step);
+        };
+        raf = requestAnimationFrame(step);
+        return () => cancelAnimationFrame(raf);
       },
-      { threshold: 0.3 },
+      { threshold: 0.35 },
     );
     io.observe(el);
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-    };
+    return () => io.disconnect();
   }, [to, duration]);
+
   return (
-    <span ref={ref}>
+    <span
+      ref={ref}
+      className="inline-block tabular-nums text-right"
+      style={{ minWidth: "3.2ch" }}
+    >
       {n}
       {suffix}
     </span>
@@ -152,7 +163,7 @@ function Hero() {
             { n: 90, s: "+", label: "Target Lighthouse score" },
           ].map((k) => (
             <div key={k.label} className="group">
-              <div className="font-display text-4xl md:text-5xl text-cream tracking-tight group-hover:text-gold-shine transition-all duration-500">
+              <div className="font-display text-4xl md:text-5xl text-cream tracking-tight group-hover:text-gold-shine transition-all duration-500 flex">
                 <AnimatedCounter to={k.n} suffix={k.s} />
               </div>
               <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{k.label}</p>
@@ -176,7 +187,7 @@ function TrustBar() {
   return (
     <section aria-label="Credibility" className="border-y border-border bg-surface/70">
       <div className="container-page py-5 overflow-hidden">
-        <div className="flex gap-14 whitespace-nowrap animate-marquee">
+        <div className="flex gap-14 whitespace-nowrap animate-marquee will-change-transform">
           {[...items, ...items].map((t, i) => (
             <span
               key={i}

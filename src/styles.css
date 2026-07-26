@@ -93,7 +93,7 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    font-feature-settings: "ss01", "cv11", "tnum";
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
@@ -114,6 +114,13 @@
   ::selection {
     background-color: var(--gold);
     color: var(--ink);
+  }
+}
+
+/* Reduce layout shift from late-loading web fonts */
+@supports (font-size-adjust: 1) {
+  body {
+    font-size-adjust: 0.5;
   }
 }
 
@@ -237,6 +244,8 @@
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.9s var(--ease-signature), transform 0.9s var(--ease-signature);
+  /* transform/opacity do not affect layout → zero CLS contribution */
+  will-change: opacity, transform;
 }
 @utility reveal-in {
   opacity: 1;
