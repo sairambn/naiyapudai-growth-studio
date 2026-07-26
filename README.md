@@ -1,4 +1,11 @@
-# Naiyapudai
+# Naiyapudai Growth Studio
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-naiyapudai.vercel.app-black?style=for-the-badge&logo=vercel)](https://naiyapudai.vercel.app/)
+[![React 19](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![TanStack Start](https://img.shields.io/badge/TanStack-Start-FF4154?style=flat-square)](https://tanstack.com/start)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
 **நையப்புடை** — Digital growth studio for Tamil Nadu.
 
@@ -37,22 +44,20 @@ The site is bilingual-ready (English + Tamil), mobile-first, and built with prod
 ```bash
 git clone https://github.com/sairambn/naiyapudai-growth-studio.git
 cd naiyapudai-growth-studio
-npm install
-npm run dev
+bun install   # or: npm install
+bun run dev   # http://localhost:3000
 ```
-
-The development server runs at `http://localhost:3000`.
 
 | Script | Description |
 |--------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Create production build |
-| `npm run preview` | Preview production build locally |
-| `npm run start` | Run production server |
-| `npm run lint` | Run ESLint |
-| `npm run format` | Format with Prettier |
+| `bun run dev` | Start development server |
+| `bun run build` | Create production build |
+| `bun run preview` | Preview production build locally |
+| `bun run start` | Run production server |
+| `bun run lint` | Run ESLint |
+| `bun run format` | Format with Prettier |
 
-Bun is also supported (`bun install` / `bun run dev`).
+> Requires [Bun](https://bun.sh) or Node 20+.
 
 ---
 
@@ -122,7 +127,7 @@ One-click clone:
 ### Local production check
 
 ```bash
-npm run build && npm run preview
+bun run build && bun run preview
 ```
 
 ---
@@ -138,6 +143,6 @@ npm run build && npm run preview
 
 ## License
 
-Private. All rights reserved © Naiyapudai.
+MIT © [Sairam BN](https://github.com/sairambn)
 
 Maintained by [@sairambn](https://github.com/sairambn).
