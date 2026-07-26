@@ -28,7 +28,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-terracotta: var(--terracotta);
+  --color-gold: var(--gold);
   --color-ink: var(--ink);
   --color-cream: var(--cream);
   --color-destructive: var(--destructive);
@@ -40,39 +40,40 @@
   --font-display: "Instrument Serif", "Noto Serif", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-tamil: "Noto Sans Tamil", "Catamaran", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --ease-signature: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 :root {
-  --radius: 0.875rem;
+  --radius: 0.5rem;
 
-  /* Palette: Indigo + Cream + Terracotta */
-  --cream: oklch(0.965 0.018 85);            /* #F7F2E8 warm off-white */
-  --ink: oklch(0.15 0.04 275);               /* #141428 near-black indigo */
-  --primary: oklch(0.32 0.14 275);           /* #2E2E7A deep indigo */
-  --primary-foreground: oklch(0.97 0.015 85);
-  --terracotta: oklch(0.66 0.13 45);         /* #C86A4A */
+  /* Dark elite palette — grand protocol */
+  --cream: oklch(0.96 0.015 85);           /* warm off-white */
+  --ink: oklch(0.12 0.01 280);             /* near-black */
+  --gold: oklch(0.82 0.12 85);             /* #E8C547 refined gold */
+  --primary: oklch(0.96 0.015 85);         /* cream as primary on dark */
+  --primary-foreground: oklch(0.12 0.01 280);
 
-  --background: var(--cream);
-  --foreground: var(--ink);
-  --surface: oklch(0.98 0.012 85);           /* lighter cream */
-  --surface-2: oklch(0.93 0.024 82);         /* deeper cream card */
+  --background: oklch(0.11 0.008 280);     /* #0B0B0D */
+  --foreground: var(--cream);
+  --surface: oklch(0.15 0.01 280);         /* elevated surface */
+  --surface-2: oklch(0.18 0.012 280);
   --card: var(--surface);
-  --card-foreground: var(--ink);
+  --card-foreground: var(--cream);
   --popover: var(--surface);
-  --popover-foreground: var(--ink);
-  --secondary: oklch(0.92 0.02 82);
-  --secondary-foreground: var(--ink);
-  --muted: oklch(0.92 0.02 82);
-  --muted-foreground: oklch(0.45 0.03 275);
-  --accent: var(--terracotta);
-  --accent-foreground: oklch(0.98 0.012 85);
+  --popover-foreground: var(--cream);
+  --secondary: oklch(0.2 0.015 280);
+  --secondary-foreground: var(--cream);
+  --muted: oklch(0.22 0.015 280);
+  --muted-foreground: oklch(0.65 0.02 280);
+  --accent: var(--gold);
+  --accent-foreground: oklch(0.12 0.01 280);
   --destructive: oklch(0.55 0.22 27);
-  --destructive-foreground: oklch(0.98 0.012 85);
-  --border: oklch(0.85 0.025 80);
-  --input: oklch(0.85 0.025 80);
-  --ring: var(--primary);
+  --destructive-foreground: var(--cream);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: var(--gold);
 }
 
 @layer base {
@@ -92,20 +93,23 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     font-weight: 400;
   }
   .font-tamil {
     font-family: var(--font-tamil);
   }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
   :focus-visible {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--gold);
     outline-offset: 3px;
     border-radius: 4px;
   }
   ::selection {
-    background-color: var(--terracotta);
-    color: var(--cream);
+    background-color: var(--gold);
+    color: var(--ink);
   }
 }
 
@@ -120,23 +124,23 @@
 
 @utility h-display {
   font-family: var(--font-display);
-  font-size: clamp(2.75rem, 6vw + 1rem, 6.5rem);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.85rem, 7vw + 1rem, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
 }
 
 @utility h-section {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3vw + 1rem, 3.75rem);
+  font-size: clamp(2.1rem, 3.5vw + 1rem, 4rem);
   line-height: 1.02;
   letter-spacing: -0.03em;
 }
 
 @utility eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted-foreground);
 }
@@ -145,57 +149,78 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.95rem 1.6rem;
+  padding: 0.95rem 1.7rem;
   border-radius: 999px;
-  background: var(--primary);
-  color: var(--primary-foreground);
-  font-weight: 500;
+  background: var(--cream);
+  color: var(--ink);
+  font-weight: 550;
   font-size: 0.95rem;
   transition: transform 0.4s var(--ease-signature), box-shadow 0.4s var(--ease-signature), background 0.3s;
-  box-shadow: 0 8px 24px -12px color-mix(in oklab, var(--primary) 55%, transparent);
-  &:hover { transform: translateY(-2px); box-shadow: 0 16px 32px -14px color-mix(in oklab, var(--primary) 60%, transparent); }
+  box-shadow: 0 8px 28px -10px color-mix(in oklab, var(--cream) 40%, transparent);
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px -12px color-mix(in oklab, var(--cream) 50%, transparent);
+  }
 }
 
 @utility btn-accent {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.95rem 1.6rem;
+  padding: 0.95rem 1.7rem;
   border-radius: 999px;
-  background: var(--terracotta);
-  color: var(--accent-foreground);
-  font-weight: 500;
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 550;
   font-size: 0.95rem;
   transition: transform 0.4s var(--ease-signature), box-shadow 0.4s var(--ease-signature);
-  box-shadow: 0 8px 24px -12px color-mix(in oklab, var(--terracotta) 55%, transparent);
-  &:hover { transform: translateY(-2px); }
+  box-shadow: 0 8px 28px -10px color-mix(in oklab, var(--gold) 45%, transparent);
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px -12px color-mix(in oklab, var(--gold) 55%, transparent);
+  }
 }
 
 @utility btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.95rem 1.4rem;
+  padding: 0.95rem 1.5rem;
   border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--foreground);
+  border: 1px solid oklch(1 0 0 / 18%);
+  color: var(--cream);
   font-weight: 500;
   font-size: 0.95rem;
   transition: background 0.3s var(--ease-signature), border-color 0.3s;
-  &:hover { background: var(--surface-2); border-color: var(--foreground); }
+  &:hover {
+    background: oklch(1 0 0 / 6%);
+    border-color: oklch(1 0 0 / 35%);
+  }
 }
 
 @utility card-soft {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid oklch(1 0 0 / 8%);
   border-radius: var(--radius-xl);
-  box-shadow: 0 1px 0 color-mix(in oklab, var(--ink) 4%, transparent),
-              0 24px 48px -32px color-mix(in oklab, var(--ink) 20%, transparent);
+  box-shadow: 0 1px 0 oklch(1 0 0 / 4%),
+              0 24px 48px -28px oklch(0 0 0 / 50%);
+}
+
+@utility card-elite {
+  background: linear-gradient(180deg, oklch(0.16 0.012 280), oklch(0.13 0.01 280));
+  border: 1px solid oklch(1 0 0 / 10%);
+  border-radius: var(--radius-xl);
+  transition: transform 0.45s var(--ease-signature), border-color 0.3s, box-shadow 0.45s;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: oklch(1 0 0 / 18%);
+    box-shadow: 0 28px 56px -24px oklch(0 0 0 / 60%);
+  }
 }
 
 @utility reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(28px);
   transition: opacity 0.9s var(--ease-signature), transform 0.9s var(--ease-signature);
 }
 @utility reveal-in {
@@ -212,11 +237,18 @@
     inset: 0;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.35;
-    background-image: radial-gradient(color-mix(in oklab, var(--ink) 8%, transparent) 1px, transparent 1px);
+    opacity: 0.4;
+    background-image: radial-gradient(oklch(1 0 0 / 6%) 1px, transparent 1px);
     background-size: 3px 3px;
-    mix-blend-mode: multiply;
   }
+}
+
+@utility protocol-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  font-weight: 500;
 }
 
 @keyframes marquee {
@@ -224,14 +256,22 @@
   to { transform: translateX(-50%); }
 }
 .animate-marquee {
-  animation: marquee 40s linear infinite;
+  animation: marquee 38s linear infinite;
 }
 
 @keyframes float-slow {
   0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
-.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--gold) 40%, transparent); }
+  50% { box-shadow: 0 0 0 10px transparent; }
+}
+.animate-glow-pulse {
+  animation: glow-pulse 2.6s ease-out infinite;
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
