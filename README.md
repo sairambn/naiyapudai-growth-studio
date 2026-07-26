@@ -4,8 +4,6 @@
 
 Naiyapudai is a Tamil Nadu digital growth studio that builds beautiful, high-performance websites, ranks them on Google Search & Maps, and runs the paid + social work that turns traffic into paying customers — for local SMBs and D2C brands across India.
 
-Live site: [naiyapudai-growth-studio.vercel.app](https://naiyapudai-growth-studio.vercel.app)
-
 ## Tech stack
 
 - **Framework**: [TanStack Start](https://tanstack.com/start) (React + file-based routing + SSR)
@@ -13,7 +11,7 @@ Live site: [naiyapudai-growth-studio.vercel.app](https://naiyapudai-growth-studi
 - **Styling**: Tailwind CSS v4 + custom design system
 - **UI primitives**: Radix UI + shadcn-style components
 - **Build tool**: Vite 8
-- **Runtime / deploy**: Nitro (Cloudflare-compatible)
+- **Deploy**: Nitro + Vercel (`framework: tanstack-start`)
 
 ## Getting started
 
@@ -73,12 +71,19 @@ src/
 - WhatsApp CTA integration throughout
 - Production-grade error boundaries and SSR error pages
 
-## Deployment
+## Deploy to Vercel
 
-The project is set up for Vercel (or any Nitro-compatible target). Push to `main` and connect the repo in your hosting dashboard.
+1. Open [vercel.com/new](https://vercel.com/new)
+2. Import **`sairambn/naiyapudai-growth-studio`**
+3. Confirm **Framework Preset = TanStack Start** (set via `vercel.json`)
+4. Click **Deploy**
+
+One-click: [Import on Vercel](https://vercel.com/new/clone?repository-url=https://github.com/sairambn/naiyapudai-growth-studio)
+
+Local production check:
 
 ```bash
-npm run build
+npm run build && npm run preview
 ```
 
 ## License
