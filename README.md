@@ -1,69 +1,58 @@
-# Naiyapudai · நையப்புடை
+# Naiyapudai
 
-### Websites that rank. Marketing that pays for itself.
+**நையப்புடை** — Digital growth studio for Tamil Nadu.
 
-[![TanStack Start](https://img.shields.io/badge/TanStack_Start-SSR-black?style=flat-square)](https://tanstack.com/start)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com/)
-
-**Naiyapudai** is a digital growth studio for Tamil Nadu — building high-performance websites, ranking them on Google Search & Maps, and running paid + social systems that turn traffic into customers for SMBs and D2C brands.
-
-> Elite dark + gold design system · Bilingual (English + Tamil) · SEO-first · Conversion-focused
+We design and develop high-performance websites, rank them on Google Search and Maps, and run performance marketing that converts traffic into customers for SMBs and D2C brands.
 
 ---
 
-## Features
+## Overview
 
-| Area | Details |
-|------|---------|
-| **Websites** | Fast, SEO-ready sites (TanStack Start / Next-style SSR) with Core Web Vitals in the green |
-| **SEO & Maps** | Technical SEO, local ranking, bilingual content, Google Business Profile |
-| **Performance marketing** | Meta + Google ads with clear CAC focus and weekly reporting |
-| **Branding & social** | Identity systems, repositioning, always-on Reels / Shorts |
-| **Experience** | Mobile-first, polished motion, WhatsApp CTAs, production error boundaries |
+| Capability | Focus |
+|------------|--------|
+| Web design & development | Fast, SEO-ready sites with strong Core Web Vitals |
+| SEO & Google Maps | Technical SEO, local ranking, bilingual content |
+| Performance marketing | Meta and Google Ads with clear CAC accountability |
+| Branding & social | Identity systems and always-on short-form content |
 
-**Built-in quality**
-
-- SEO foundation — JSON-LD, meta tags, sitemap, canonicals  
-- Accessibility — skip link, focus management, semantic HTML  
-- Bilingual typography — English + Tamil (Noto Sans Tamil)  
-- Luxury dark/gold design system with animated gold shine & ambient glows  
+The site is bilingual-ready (English + Tamil), mobile-first, and built with production-grade SEO, accessibility, and error handling.
 
 ---
 
 ## Tech stack
 
-| Layer | Choice |
-|-------|--------|
-| Framework | [TanStack Start](https://tanstack.com/start) (React + file-based routing + SSR) |
+| Layer | Technology |
+|-------|------------|
+| Framework | [TanStack Start](https://tanstack.com/start) (React, file-based routing, SSR) |
 | Language | TypeScript |
-| Styling | Tailwind CSS v4 + custom design tokens |
-| UI | Radix UI + shadcn-style components |
+| Styling | Tailwind CSS v4 with custom design tokens |
+| Components | Radix UI (shadcn-style) |
 | Build | Vite 8 |
-| Deploy | Nitro + Vercel (`framework: tanstack-start`) |
-| Package manager | npm or [Bun](https://bun.sh) |
+| Runtime / Deploy | Nitro · Vercel |
 
 ---
 
-## Quick start
+## Getting started
 
 ```bash
 git clone https://github.com/sairambn/naiyapudai-growth-studio.git
 cd naiyapudai-growth-studio
-npm install          # or: bun install
-npm run dev          # → http://localhost:3000
+npm install
+npm run dev
 ```
 
-| Command | Description |
-|---------|-------------|
+The development server runs at `http://localhost:3000`.
+
+| Script | Description |
+|--------|-------------|
 | `npm run dev` | Start development server |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
+| `npm run build` | Create production build |
+| `npm run preview` | Preview production build locally |
 | `npm run start` | Run production server |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier |
+| `npm run lint` | Run ESLint |
+| `npm run format` | Format with Prettier |
+
+Bun is also supported (`bun install` / `bun run dev`).
 
 ---
 
@@ -71,52 +60,66 @@ npm run dev          # → http://localhost:3000
 
 ```text
 src/
-├── components/           # Nav, footer, WhatsApp FAB, UI primitives
-│   ├── site-nav.tsx
-│   ├── site-footer.tsx
-│   ├── whatsapp-fab.tsx
-│   └── ui/               # Radix / shadcn components
-├── hooks/                # Custom React hooks
-├── lib/                  # Utils, error handling, reveal animations
-├── routes/               # File-based routes (TanStack Router)
-│   ├── __root.tsx        # Root layout + SEO shell
-│   ├── index.tsx         # Home
+├── components/          # Navigation, footer, WhatsApp FAB, UI primitives
+├── hooks/               # Shared React hooks
+├── lib/                 # Utilities, error handling, reveal animations
+├── routes/              # File-based routes (TanStack Router)
+│   ├── __root.tsx       # Root layout and SEO shell
+│   ├── index.tsx        # Home
 │   ├── about.tsx
 │   ├── services.tsx
 │   ├── work.tsx
-│   ├── work.$slug.tsx    # Case study detail
+│   ├── work.$slug.tsx   # Case study detail
 │   ├── process.tsx
 │   ├── blog.tsx
 │   ├── contact.tsx
 │   └── sitemap[.]xml.ts
-├── styles.css            # Design tokens, gold system, utilities
-├── server.ts             # SSR entry + error fallback
-└── start.ts              # Middleware (CSRF + error handling)
+├── styles.css           # Design tokens and global styles
+├── server.ts            # SSR entry
+└── start.ts             # Application middleware
 ```
 
 ---
 
-## Design system (Grand Goldy)
+## Design system
 
-The site uses a refined **dark elite + gold** palette:
+The interface uses a dark elite palette with a refined gold accent scale:
 
 - **Background** — deep near-black  
-- **Gold scale** — `--gold`, `--gold-light` (champagne), `--gold-dark` (antique)  
-- **Typography** — Instrument Serif (display) + Inter + Noto Sans Tamil  
-- **Effects** — animated gold text shine, ambient radial glows, elite card hover states, glow-pulse CTAs  
+- **Accent** — gold / champagne / antique gold  
+- **Typography** — Instrument Serif (display), Inter (body), Noto Sans Tamil  
 
-Key utilities live in `src/styles.css` (`btn-accent`, `card-elite`, `text-gold-shine`, `protocol-num`, etc.).
+Core utilities are defined in `src/styles.css` (`btn-accent`, `card-elite`, `text-gold-shine`, `protocol-num`, and related tokens).
 
 ---
 
-## Deploy to Vercel
+## Routes
 
-1. Go to [vercel.com/new](https://vercel.com/new)  
-2. Import **`sairambn/naiyapudai-growth-studio`**  
-3. Framework preset = **TanStack Start** (already set in `vercel.json`)  
-4. Deploy  
+| Path | Purpose |
+|------|---------|
+| `/` | Home |
+| `/services` | Services |
+| `/work` | Case studies |
+| `/work/$slug` | Case study detail |
+| `/process` | Methodology |
+| `/about` | About the studio |
+| `/blog` | Insights |
+| `/contact` | Contact |
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sairambn/naiyapudai-growth-studio)
+---
+
+## Deployment
+
+### Vercel (recommended)
+
+1. Import the repository at [vercel.com/new](https://vercel.com/new)  
+2. Framework preset: **TanStack Start** (configured in `vercel.json`)  
+3. Deploy  
+
+One-click clone:  
+[https://vercel.com/new/clone?repository-url=https://github.com/sairambn/naiyapudai-growth-studio](https://vercel.com/new/clone?repository-url=https://github.com/sairambn/naiyapudai-growth-studio)
+
+### Local production check
 
 ```bash
 npm run build && npm run preview
@@ -124,22 +127,17 @@ npm run build && npm run preview
 
 ---
 
-## Pages
+## Quality & accessibility
 
-| Route | Purpose |
-|-------|---------|
-| `/` | Home — hero, services, work, process, testimonials, CTA |
-| `/services` | Full service breakdown |
-| `/work` | Case studies overview |
-| `/work/$slug` | Individual case study |
-| `/process` | Operating system / methodology |
-| `/about` | Studio story |
-| `/blog` | Insights |
-| `/contact` | Contact form + WhatsApp |
+- SEO: JSON-LD, meta tags, sitemap, canonical URLs  
+- Accessibility: skip link, focus management, semantic markup  
+- Error handling: production boundaries and SSR fallback pages  
+- Motion: reduced-motion support  
 
 ---
 
 ## License
 
-Private · All rights reserved © Naiyapudai  
-Built by [@sairambn](https://github.com/sairambn)
+Private. All rights reserved © Naiyapudai.
+
+Maintained by [@sairambn](https://github.com/sairambn).
