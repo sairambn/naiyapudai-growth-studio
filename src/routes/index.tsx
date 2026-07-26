@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "Naiyapudai · நையப்புடை — Websites that rank. Marketing that pays for itself.",
+          "Naiyapudai · நையப்புடை — Zero friction. 100 on results.",
       },
       {
         name: "description",
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:title",
         content:
-          "Naiyapudai · நையப்புடை — Websites that rank. Marketing that pays for itself.",
+          "Naiyapudai · நையப்புடை — Zero friction. 100 on results.",
       },
       {
         property: "og:description",
@@ -48,22 +48,17 @@ function HomePage() {
   );
 }
 
-/** Abstract growth visual — cinematic panel like Go Zero product hero */
 function HeroVisual() {
   return (
     <div className="relative aspect-[4/5] md:aspect-square w-full max-w-lg mx-auto">
-      {/* Outer glow ring */}
       <div
-        className="absolute inset-[-8%] rounded-[2rem] bg-[radial-gradient(ellipse_at_center,oklch(0.84_0.145_85_/_0.2),transparent_70%)] animate-ambient-glow"
+        className="absolute inset-[-8%] rounded-[2rem] bg-[radial-gradient(ellipse_at_center,oklch(0.93_0.2_120_/_0.22),transparent_70%)] animate-ambient-glow"
         aria-hidden
       />
 
-      {/* Main card */}
       <div className="relative h-full rounded-[1.75rem] border border-gold/25 bg-gradient-to-br from-surface-2 via-surface to-background overflow-hidden shadow-[0_40px_80px_-30px_oklch(0_0_0_/_0.8),0_0_60px_-20px_color-mix(in_oklab,var(--gold)_30%,transparent)]">
-        {/* Mesh inside card */}
         <div className="absolute inset-0 mesh-bg opacity-80" aria-hidden />
 
-        {/* Grid lines */}
         <div
           className="absolute inset-0 opacity-[0.12]"
           style={{
@@ -74,13 +69,11 @@ function HeroVisual() {
           aria-hidden
         />
 
-        {/* Floating orbs */}
         <div className="absolute top-[12%] left-[14%] h-24 w-24 rounded-full bg-gold/25 blur-2xl animate-float-slow" aria-hidden />
         <div className="absolute bottom-[18%] right-[10%] h-32 w-32 rounded-full bg-gold-dark/20 blur-3xl animate-float-delayed" aria-hidden />
 
-        {/* Central mark */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-          <div className="font-display text-[clamp(4rem,12vw,6.5rem)] leading-none text-gold-shine tracking-tight">
+          <div className="font-display text-[clamp(4rem,12vw,6.5rem)] leading-none text-gold-shine tracking-tight font-extrabold">
             90+
           </div>
           <div className="mt-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
@@ -99,14 +92,12 @@ function HeroVisual() {
           </div>
         </div>
 
-        {/* Corner accents */}
         <div className="absolute top-4 left-4 h-8 w-8 border-t border-l border-gold/40 rounded-tl-lg" aria-hidden />
         <div className="absolute top-4 right-4 h-8 w-8 border-t border-r border-gold/40 rounded-tr-lg" aria-hidden />
         <div className="absolute bottom-4 left-4 h-8 w-8 border-b border-l border-gold/40 rounded-bl-lg" aria-hidden />
         <div className="absolute bottom-4 right-4 h-8 w-8 border-b border-r border-gold/40 rounded-br-lg" aria-hidden />
       </div>
 
-      {/* Floating badge */}
       <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 glass-stat px-5 py-2.5 flex items-center gap-2 whitespace-nowrap">
         <span className="h-2 w-2 rounded-full bg-gold animate-pulse" aria-hidden />
         <span className="text-xs font-medium tracking-wide text-cream">Core Web Vitals · green</span>
@@ -120,7 +111,7 @@ function Hero() {
   return (
     <section className="grain-bg relative overflow-hidden pt-16 md:pt-24 pb-24 md:pb-32">
       <div
-        className="pointer-events-none absolute top-[-15%] left-1/2 -translate-x-1/2 w-[100vw] h-[70vh] bg-[radial-gradient(ellipse_at_center,oklch(0.84_0.145_85_/_0.16),transparent_65%)] animate-ambient-glow"
+        className="pointer-events-none absolute top-[-15%] left-1/2 -translate-x-1/2 w-[100vw] h-[70vh] bg-[radial-gradient(ellipse_at_center,oklch(0.93_0.2_120_/_0.14),transparent_65%)] animate-ambient-glow"
         aria-hidden
       />
 
@@ -128,23 +119,23 @@ function Hero() {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           <div ref={revealRef} className="reveal lg:col-span-7 max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 mb-8">
-              <span className="protocol-num">00 — SYSTEM PROTOCOL // MMXXVI</span>
-              <span className="h-px w-10 bg-gradient-to-r from-gold/60 to-transparent" aria-hidden />
+              <span className="inline-flex items-center rounded-full border border-gold/25 bg-gold/10 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-gold">
+                Growth studio · Tamil Nadu
+              </span>
               <span className="eyebrow !normal-case tracking-normal font-tamil text-[0.8rem] text-gold-light">
                 தமிழ்நாட்டின் டிஜிட்டல் ஸ்டூடியோ
               </span>
             </div>
 
             <h1 className="h-display">
-              Websites that <em className="text-gold-shine not-italic">rank</em>.
+              ZERO FRICTION.
               <br />
-              Marketing that <em className="italic text-cream/95">pays for itself.</em>
+              <span className="text-gold-shine">100 ON RESULTS.</span>
             </h1>
 
             <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Naiyapudai is the Tamil Nadu studio that ships elite websites, ranks them on Google
-              Search & Maps, and runs the paid, social, and brand systems that turn traffic into
-              paying customers — for serious SMBs and local brands.
+              High-performance websites. Local SEO that ranks. Google Maps that convert.
+              Built for SMBs who want traffic that turns into calls — not vanity metrics.
             </p>
 
             <div className="mt-12 flex flex-wrap items-center gap-4">
@@ -166,16 +157,15 @@ function Hero() {
           </div>
         </div>
 
-        {/* Glass stats row */}
         <div className="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {[
-            { value: "1", label: "Live client engagement" },
-            { value: "100%", label: "Focus: web + SEO + Maps" },
+            { value: "1+", label: "Live client engagement" },
+            { value: "SSR", label: "Modern production stack" },
             { value: "4.9★", label: "Client public rating" },
-            { value: "90+", label: "Target Lighthouse score" },
+            { value: "Maps", label: "+ Schema local SEO" },
           ].map((k) => (
             <div key={k.label} className="glass-stat p-5 md:p-6 group">
-              <div className="font-display text-3xl md:text-4xl text-cream tracking-tight group-hover:text-gold-shine transition-colors duration-500 tabular-nums">
+              <div className="font-display text-3xl md:text-4xl text-cream tracking-tight group-hover:text-gold-shine transition-colors duration-500 tabular-nums font-bold">
                 {k.value}
               </div>
               <p className="mt-2 text-[0.65rem] md:text-xs uppercase tracking-widest text-muted-foreground leading-snug">
@@ -191,12 +181,14 @@ function Hero() {
 
 function TrustBar() {
   const items = [
-    "Google Business Profile",
-    "Local SEO · Tamil Nadu",
-    "TanStack Start · React 19",
-    "Schema.org structured data",
-    "Core Web Vitals focus",
-    "WhatsApp conversion paths",
+    "React 19",
+    "TanStack Start",
+    "Tailwind v4",
+    "Schema.org",
+    "Google Maps",
+    "Core Web Vitals",
+    "Vercel",
+    "Local SEO",
   ];
   return (
     <section aria-label="Credibility signals" className="border-y border-border bg-surface/70">
@@ -260,7 +252,9 @@ function Services() {
           <div>
             <span className="protocol-num">01 — CAPABILITIES</span>
             <h2 className="h-section mt-5 max-w-2xl">
-              One studio for the site, the ranking, and the growth.
+              Sites that convert.
+              <br />
+              <span className="text-muted-foreground">Maps that get found.</span>
             </h2>
           </div>
           <Link to="/services" className="btn-ghost self-start" aria-label="View all services">
@@ -270,7 +264,6 @@ function Services() {
         <div ref={ref} className="reveal grid gap-5 md:grid-cols-2">
           {services.map((s) => (
             <article key={s.title} className="card-elite p-8 md:p-10 group">
-              {/* Hover light sweep */}
               <div
                 className="sweep-light pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-gold/10 to-transparent"
                 aria-hidden
@@ -320,7 +313,7 @@ function FeaturedWork() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div>
             <span className="protocol-num">02 — SELECTED WORK</span>
-            <h2 className="h-section mt-5 max-w-2xl">First client. Full stack of deliverables.</h2>
+            <h2 className="h-section mt-5 max-w-2xl">Live client work</h2>
             <p className="mt-4 text-muted-foreground max-w-xl">
               Total Fitness Studio — conversion website, local SEO, and Google Maps optimization.
               Our first order, shipped end-to-end.
@@ -340,17 +333,15 @@ function FeaturedWork() {
               className="group block card-elite overflow-hidden"
               aria-label={`${c.client} case study — ${c.metric} ${c.metricLabel}`}
             >
-              {/* Browser chrome */}
               <div className="browser-chrome">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" aria-hidden />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" aria-hidden />
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" aria-hidden />
                 <div className="ml-3 flex-1 rounded-md bg-background/50 border border-border/50 px-3 py-1 text-[0.65rem] text-muted-foreground truncate">
-                  totalfitness.studio · Chromepet
+                  total-fitness-studio-livid.vercel.app
                 </div>
               </div>
 
-              {/* Visual stage */}
               <div className="aspect-[16/9] relative bg-gradient-to-br from-surface-2 via-background to-surface overflow-hidden">
                 <div className="absolute inset-0 mesh-bg" aria-hidden />
                 <div
@@ -364,7 +355,7 @@ function FeaturedWork() {
                 />
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                  <div className="font-display text-6xl md:text-8xl leading-none text-cream group-hover:text-gold-shine transition-colors duration-500">
+                  <div className="font-display text-6xl md:text-8xl leading-none text-cream group-hover:text-gold-shine transition-colors duration-500 font-extrabold">
                     {c.metric}
                   </div>
                   <div className="mt-3 text-sm md:text-base text-muted-foreground">{c.metricLabel}</div>
@@ -391,7 +382,7 @@ function FeaturedWork() {
               <div className="p-6 md:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-border/60">
                 <div>
                   <div className="text-xs uppercase tracking-widest text-muted-foreground">{c.industry}</div>
-                  <div className="mt-1 text-xl font-display">{c.client}</div>
+                  <div className="mt-1 text-xl font-display font-bold">{c.client}</div>
                 </div>
                 <span className="text-sm text-gold inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
                   View case study <ArrowUpRight size={14} aria-hidden />
@@ -450,7 +441,7 @@ function Process() {
               <div className="h-16 w-16 rounded-2xl border border-gold/40 bg-gradient-to-br from-gold/20 to-gold/5 text-gold grid place-items-center font-mono text-sm relative z-10 shadow-[0_0_28px_-4px_var(--gold)] group-hover:scale-105 transition-transform duration-400">
                 {s.n}
               </div>
-              <h3 className="mt-7 text-xl font-display">{s.title}</h3>
+              <h3 className="mt-7 text-xl font-display font-bold">{s.title}</h3>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.body}</p>
             </div>
           ))}
@@ -497,7 +488,7 @@ function Testimonials() {
                 {t.quote}
               </blockquote>
               <figcaption className="mt-10 flex items-center gap-4 text-sm">
-                <div className="h-12 w-12 rounded-full border border-gold/30 bg-gold/15 grid place-items-center font-display text-lg text-gold">
+                <div className="h-12 w-12 rounded-full border border-gold/30 bg-gold/15 grid place-items-center font-display text-lg text-gold font-bold">
                   TF
                 </div>
                 <div>
@@ -520,13 +511,13 @@ function FinalCta() {
         <div className="card-elite p-10 md:p-16 relative overflow-hidden">
           <div className="absolute inset-0 mesh-bg opacity-60" aria-hidden />
           <div
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.84_0.145_85_/_0.15),transparent_55%)]"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.93_0.2_120_/_0.15),transparent_55%)]"
             aria-hidden
           />
           <div className="max-w-3xl relative z-10">
             <span className="protocol-num">05 — INITIATE</span>
             <h2 className="h-section mt-5">
-              Ready to make your business impossible to ignore online?
+              Ready to grow without the noise?
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               One 30-minute call. We look at your site, your search presence, and your Maps listing
