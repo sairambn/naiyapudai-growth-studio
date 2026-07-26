@@ -6,11 +6,15 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![TanStack Start](https://img.shields.io/badge/TanStack-Start-FF4154?style=flat-square)](https://tanstack.com/start)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/License-Proprietary-red.svg?style=flat-square)](LICENSE)
 
 **நையப்புடை** — Digital growth studio for Tamil Nadu.
 
-We design and develop high-performance websites, rank them on Google Search and Maps, and run performance marketing that converts traffic into customers for SMBs and D2C brands.
+**Company property of Naiyapudai** (Sairam BN). Not open source.
+
+We design and develop high-performance websites, rank them on Google Search and Maps, and run performance marketing that converts traffic into customers for SMBs and local brands.
+
+**First client order:** [Total Fitness Studio](https://github.com/sairambn/TotalFitnessStudio) (Chromepet) — conversion website + local SEO + Google Maps optimization.
 
 ---
 
@@ -19,11 +23,22 @@ We design and develop high-performance websites, rank them on Google Search and 
 | Capability | Focus |
 |------------|--------|
 | Web design & development | Fast, SEO-ready sites with strong Core Web Vitals |
-| SEO & Google Maps | Technical SEO, local ranking, bilingual content |
+| SEO & Google Maps | Technical SEO, GBP / local ranking, Schema.org |
 | Performance marketing | Meta and Google Ads with clear CAC accountability |
-| Branding & social | Identity systems and always-on short-form content |
+| Branding & social | Identity systems and short-form content |
 
 The site is bilingual-ready (English + Tamil), mobile-first, and built with production-grade SEO, accessibility, and error handling.
+
+---
+
+## Featured client
+
+**Total Fitness Studio** — Unisex gym, Chromepet / Hasthinapuram  
+Deliverables: SSR marketing site, Schema.org `GymAndFitnessClub`, geo meta, tel/WhatsApp CTAs, Google Business Profile & Maps alignment.
+
+- Live site: https://total-fitness-studio-livid.vercel.app/  
+- Maps: https://maps.app.goo.gl/M1VcPF2LMbexLFuE9  
+- Case study on this site: `/work/total-fitness-studio`
 
 ---
 
@@ -57,6 +72,7 @@ bun run dev   # http://localhost:3000
 | `bun run start` | Run production server |
 | `bun run lint` | Run ESLint |
 | `bun run format` | Format with Prettier |
+| `bun run typecheck` | TypeScript check |
 
 > Requires [Bun](https://bun.sh) or Node 20+.
 
@@ -74,43 +90,16 @@ src/
 │   ├── index.tsx        # Home
 │   ├── about.tsx
 │   ├── services.tsx
-│   ├── work.tsx
-│   ├── work.$slug.tsx   # Case study detail
+│   ├── work.tsx         # Case studies (Total Fitness only)
+│   ├── work.$slug.tsx
 │   ├── process.tsx
 │   ├── blog.tsx
 │   ├── contact.tsx
 │   └── sitemap[.]xml.ts
-├── styles.css           # Design tokens and global styles
-├── server.ts            # SSR entry
-└── start.ts             # Application middleware
+├── styles.css
+├── server.ts
+└── start.ts
 ```
-
----
-
-## Design system
-
-The interface uses a dark elite palette with a refined gold accent scale:
-
-- **Background** — deep near-black  
-- **Accent** — gold / champagne / antique gold  
-- **Typography** — Instrument Serif (display), Inter (body), Noto Sans Tamil  
-
-Core utilities are defined in `src/styles.css` (`btn-accent`, `card-elite`, `text-gold-shine`, `protocol-num`, and related tokens).
-
----
-
-## Routes
-
-| Path | Purpose |
-|------|---------|
-| `/` | Home |
-| `/services` | Services |
-| `/work` | Case studies |
-| `/work/$slug` | Case study detail |
-| `/process` | Methodology |
-| `/about` | About the studio |
-| `/blog` | Insights |
-| `/contact` | Contact |
 
 ---
 
@@ -118,32 +107,27 @@ Core utilities are defined in `src/styles.css` (`btn-accent`, `card-elite`, `tex
 
 ### Vercel (recommended)
 
-1. Import the repository at [vercel.com/new](https://vercel.com/new)  
-2. Framework preset: **TanStack Start** (configured in `vercel.json`)  
+1. Import at [vercel.com/new](https://vercel.com/new)  
+2. Framework preset: **TanStack Start** (`vercel.json`)  
 3. Deploy  
 
-One-click clone:  
-[https://vercel.com/new/clone?repository-url=https://github.com/sairambn/naiyapudai-growth-studio](https://vercel.com/new/clone?repository-url=https://github.com/sairambn/naiyapudai-growth-studio)
-
-### Local production check
-
-```bash
-bun run build && bun run preview
-```
+Live: https://naiyapudai.vercel.app/
 
 ---
 
-## Quality & accessibility
+## Quality & SEO
 
-- SEO: JSON-LD, meta tags, sitemap, canonical URLs  
+- JSON-LD, meta tags, sitemap, canonical URLs  
 - Accessibility: skip link, focus management, semantic markup  
-- Error handling: production boundaries and SSR fallback pages  
+- Error handling: production boundaries and SSR fallbacks  
 - Motion: reduced-motion support  
+- Client work emphasizes local SEO + Google Maps (see Total Fitness case study)
 
 ---
 
 ## License
 
-MIT © [Sairam BN](https://github.com/sairambn)
+**Proprietary.** All rights reserved © Naiyapudai / Sairam BN.  
+See [LICENSE](./LICENSE). Unauthorized use or redistribution is prohibited.
 
 Maintained by [@sairambn](https://github.com/sairambn).
