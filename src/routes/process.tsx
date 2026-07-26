@@ -25,11 +25,11 @@ const phases = [
 function ProcessPage() {
   return (
     <>
-      <section className="pt-16 md:pt-24 pb-8">
+      <section className="pt-16 md:pt-24 pb-8 grain-bg">
         <div className="container-page max-w-4xl">
-          <span className="eyebrow">Process</span>
-          <h1 className="h-display mt-4">Transparent by design.</h1>
-          <p className="mt-6 text-lg text-muted-foreground">
+          <span className="protocol-num">03 — OPERATING SYSTEM</span>
+          <h1 className="h-display mt-5">Transparent by design.</h1>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             Every Naiyapudai engagement runs through the same four phases. You know what
             you're getting, when you're getting it, and what it costs — before you sign.
           </p>
@@ -39,14 +39,14 @@ function ProcessPage() {
       <section className="py-16 md:py-24">
         <div className="container-page grid gap-6">
           {phases.map((p) => (
-            <div key={p.n} className="card-soft p-8 md:p-12 grid md:grid-cols-12 gap-6 items-start">
+            <div key={p.n} className="card-elite p-8 md:p-12 grid md:grid-cols-12 gap-6 items-start">
               <div className="md:col-span-3">
-                <div className="font-display text-5xl text-terracotta">{p.n}</div>
-                <div className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{p.weeks}</div>
+                <div className="protocol-num text-4xl">{p.n}</div>
+                <div className="mt-3 text-xs uppercase tracking-widest text-muted-foreground">{p.weeks}</div>
               </div>
               <div className="md:col-span-9">
-                <h2 className="text-2xl md:text-3xl">{p.title}</h2>
-                <p className="mt-3 text-muted-foreground">{p.body}</p>
+                <h2 className="text-2xl md:text-3xl font-display">{p.title}</h2>
+                <p className="mt-3 text-muted-foreground leading-relaxed">{p.body}</p>
               </div>
             </div>
           ))}
@@ -55,9 +55,9 @@ function ProcessPage() {
 
       <section className="pb-24">
         <div className="container-page max-w-4xl">
-          <span className="eyebrow">Pricing philosophy</span>
-          <h2 className="h-section mt-4">Custom quotes, transparent structure.</h2>
-          <p className="mt-6 text-lg text-muted-foreground">
+          <span className="protocol-num">PRICING</span>
+          <h2 className="h-section mt-5">Custom quotes, transparent structure.</h2>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             Websites are one-time project fees based on scope. SEO, ads, and content are
             monthly retainers with a clear scope of deliverables. No lock-ins beyond 90
             days, no hidden add-ons, no surprise invoices. We share ballpark ranges on

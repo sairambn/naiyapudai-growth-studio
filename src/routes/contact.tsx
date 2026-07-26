@@ -32,11 +32,11 @@ function ContactPage() {
 
   return (
     <>
-      <section className="pt-16 md:pt-24 pb-8">
+      <section className="pt-16 md:pt-24 pb-8 grain-bg">
         <div className="container-page max-w-4xl">
-          <span className="eyebrow">Contact</span>
-          <h1 className="h-display mt-4">Let's talk.</h1>
-          <p className="mt-6 text-lg text-muted-foreground">
+          <span className="protocol-num">05 — INITIATE</span>
+          <h1 className="h-display mt-5">Let's talk.</h1>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             Fastest path: WhatsApp us. Or send the form below and we'll reply within
             4 working hours (usually much sooner).
           </p>
@@ -55,7 +55,7 @@ function ContactPage() {
         <div className="container-page grid md:grid-cols-12 gap-12 max-w-6xl">
           <div className="md:col-span-7">
             <form
-              className="card-soft p-8 md:p-10 grid gap-5"
+              className="card-elite p-8 md:p-10 grid gap-5"
               onSubmit={(e) => {
                 e.preventDefault();
                 const fd = new FormData(e.currentTarget);
@@ -68,7 +68,6 @@ function ContactPage() {
                   return;
                 }
                 setErrors({});
-                // {{TODO: wire to server function -> Resend + CRM webhook}}
                 console.log("contact submission", parsed.data);
                 setStatus("sent");
               }}
@@ -80,12 +79,12 @@ function ContactPage() {
                 <Field label="Email" name="email" type="email" error={errors.email} />
               </div>
               <div>
-                <label className="text-sm block mb-2" htmlFor="budget">Budget range</label>
+                <label className="text-sm block mb-2 text-muted-foreground" htmlFor="budget">Budget range</label>
                 <select
                   id="budget"
                   name="budget"
                   defaultValue="₹50k – ₹1L / month"
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-surface"
+                  className="w-full px-4 py-3 rounded-lg border border-border bg-surface text-cream"
                 >
                   <option>Under ₹50k / month</option>
                   <option>₹50k – ₹1L / month</option>
@@ -95,12 +94,12 @@ function ContactPage() {
                 </select>
               </div>
               <div>
-                <label className="text-sm block mb-2" htmlFor="message">What are you trying to solve?</label>
+                <label className="text-sm block mb-2 text-muted-foreground" htmlFor="message">What are you trying to solve?</label>
                 <textarea
                   id="message"
                   name="message"
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-surface"
+                  className="w-full px-4 py-3 rounded-lg border border-border bg-surface text-cream"
                   aria-invalid={!!errors.message}
                   aria-describedby={errors.message ? "message-err" : undefined}
                 />
@@ -110,7 +109,7 @@ function ContactPage() {
                 Send message
               </button>
               {status === "sent" && (
-                <p className="text-sm text-primary">
+                <p className="text-sm text-gold">
                   Got it — we'll be in touch within 4 working hours. For faster response, WhatsApp us.
                 </p>
               )}
@@ -121,22 +120,22 @@ function ContactPage() {
           </div>
 
           <aside className="md:col-span-5 space-y-6">
-            <div className="card-soft p-6">
-              <h3 className="text-lg">Reach us directly</h3>
-              <ul className="mt-4 space-y-2 text-sm">
-                <li><a className="hover:text-primary" href="https://wa.me/919999999999">WhatsApp: +91 99999 99999</a></li>
-                <li><a className="hover:text-primary" href="mailto:hello@naiyapudai.com">hello@naiyapudai.com</a></li>
-                <li className="text-muted-foreground">Tamil Nadu, India</li>
+            <div className="card-elite p-6">
+              <h3 className="text-lg font-display">Reach us directly</h3>
+              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                <li><a className="hover:text-cream transition-colors" href="https://wa.me/919999999999">WhatsApp: +91 99999 99999</a></li>
+                <li><a className="hover:text-cream transition-colors" href="mailto:hello@naiyapudai.com">hello@naiyapudai.com</a></li>
+                <li>Tamil Nadu, India</li>
               </ul>
             </div>
-            <div className="card-soft p-6">
-              <h3 className="text-lg">Response time</h3>
+            <div className="card-elite p-6">
+              <h3 className="text-lg font-display">Response time</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 We reply within 4 working hours, Mon–Sat, 9am–7pm IST. WhatsApp is fastest.
               </p>
             </div>
-            <div className="card-soft p-6">
-              <h3 className="text-lg font-tamil">தமிழில் பேசலாம்</h3>
+            <div className="card-elite p-6">
+              <h3 className="text-lg font-tamil text-gold">தமிழில் பேசலாம்</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 Prefer Tamil? Message us in Tamil — the whole team is fluent.
               </p>
@@ -152,12 +151,12 @@ function Field({ label, name, type = "text", error }: { label: string; name: str
   const id = `f-${name}`;
   return (
     <div>
-      <label className="text-sm block mb-2" htmlFor={id}>{label}</label>
+      <label className="text-sm block mb-2 text-muted-foreground" htmlFor={id}>{label}</label>
       <input
         id={id}
         name={name}
         type={type}
-        className="w-full px-4 py-3 rounded-lg border border-border bg-surface"
+        className="w-full px-4 py-3 rounded-lg border border-border bg-surface text-cream"
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-err` : undefined}
       />
