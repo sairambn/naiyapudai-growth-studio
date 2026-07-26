@@ -5,7 +5,6 @@
 **நையப்புடை** — Digital growth studio for Tamil Nadu
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-naiyapudai.vercel.app-black?style=for-the-badge&logo=vercel)](https://naiyapudai.vercel.app/)
-[![CI](https://github.com/sairambn/naiyapudai-growth-studio/actions/workflows/ci.yml/badge.svg)](https://github.com/sairambn/naiyapudai-growth-studio/actions/workflows/ci.yml)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![TanStack Start](https://img.shields.io/badge/TanStack-Start-FF4154?style=flat-square)](https://tanstack.com/start)
