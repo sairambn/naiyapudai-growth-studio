@@ -61,22 +61,24 @@ function HomePage() {
 function Hero() {
   const revealRef = useReveal<HTMLDivElement>();
   return (
-    <section className="grain-bg relative overflow-hidden pt-16 md:pt-28 pb-28 md:pb-36">
-      {/* subtle radial glow */}
-      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-[radial-gradient(ellipse_at_center,oklch(0.82_0.12_85_/_0.08),transparent_70%)]" aria-hidden />
+    <section className="grain-bg relative overflow-hidden pt-16 md:pt-28 pb-28 md:pb-40">
+      {/* Grand ambient gold glows */}
+      <div className="pointer-events-none absolute top-[-10%] left-1/2 -translate-x-1/2 w-[90vw] h-[60vh] bg-[radial-gradient(ellipse_at_center,oklch(0.84_0.145_85_/_0.14),transparent_65%)] animate-ambient-glow" aria-hidden />
+      <div className="pointer-events-none absolute top-[20%] right-[-5%] w-[40vw] h-[40vh] bg-[radial-gradient(ellipse_at_center,oklch(0.84_0.145_85_/_0.06),transparent_70%)]" aria-hidden />
+      <div className="pointer-events-none absolute bottom-[10%] left-[-10%] w-[35vw] h-[35vh] bg-[radial-gradient(ellipse_at_center,oklch(0.68_0.12_75_/_0.05),transparent_70%)]" aria-hidden />
 
       <div className="container-page relative">
         <div ref={revealRef} className="reveal max-w-5xl">
           <div className="flex flex-wrap items-center gap-3 mb-8">
             <span className="protocol-num">00 — SYSTEM PROTOCOL // MMXXVI</span>
-            <span className="h-px w-8 bg-border" />
-            <span className="eyebrow !normal-case tracking-normal font-tamil text-[0.8rem]">தமிழ்நாட்டின் டிஜிட்டல் ஸ்டூடியோ</span>
+            <span className="h-px w-10 bg-gradient-to-r from-gold/60 to-transparent" />
+            <span className="eyebrow !normal-case tracking-normal font-tamil text-[0.8rem] text-gold-light/90">தமிழ்நாட்டின் டிஜிட்டல் ஸ்டூடியோ</span>
           </div>
 
           <h1 className="h-display">
-            Websites that <em className="text-gold not-italic">rank</em>.
+            Websites that <em className="text-gold-shine not-italic">rank</em>.
             <br />
-            Marketing that <em className="italic text-cream/90">pays for itself.</em>
+            Marketing that <em className="italic text-cream/95">pays for itself.</em>
           </h1>
 
           <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
@@ -96,7 +98,7 @@ function Hero() {
           </div>
         </div>
 
-        {/* Stat ticker — elite */}
+        {/* Stat ticker — elevated */}
         <div className="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-border pt-12">
           {[
             { n: 40, s: "+", label: "Sites shipped" },
@@ -105,7 +107,7 @@ function Hero() {
             { n: 98, s: "/100", label: "Avg. Lighthouse" },
           ].map((k) => (
             <div key={k.label} className="group">
-              <div className="font-display text-4xl md:text-5xl text-cream tracking-tight">
+              <div className="font-display text-4xl md:text-5xl text-cream tracking-tight group-hover:text-gold-shine transition-all duration-500">
                 <AnimatedCounter to={k.n} suffix={k.s} />
               </div>
               <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{k.label}</p>
@@ -127,12 +129,12 @@ function TrustBar() {
     "WhatsApp Business API",
   ];
   return (
-    <section aria-label="Credibility" className="border-y border-border bg-surface/60">
+    <section aria-label="Credibility" className="border-y border-border bg-surface/70">
       <div className="container-page py-5 overflow-hidden">
         <div className="flex gap-14 whitespace-nowrap animate-marquee">
           {[...items, ...items].map((t, i) => (
             <span key={i} className="text-xs uppercase tracking-[0.18em] text-muted-foreground flex items-center gap-3">
-              <span className="h-1 w-1 rounded-full bg-gold" /> {t}
+              <span className="h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_8px_var(--gold)]" /> {t}
             </span>
           ))}
         </div>
@@ -200,7 +202,7 @@ function Services() {
                   <span className="protocol-num">{s.num}</span>
                   <s.icon className="text-gold" size={24} strokeWidth={1.4} />
                 </div>
-                <span className="font-tamil text-sm text-muted-foreground">{s.tamil}</span>
+                <span className="font-tamil text-sm text-gold-light/70">{s.tamil}</span>
               </div>
               <h3 className="mt-8 text-2xl md:text-3xl font-display">{s.title}</h3>
               <p className="mt-4 text-muted-foreground leading-relaxed">{s.body}</p>
@@ -246,7 +248,7 @@ const cases = [
 function FeaturedWork() {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <section className="py-28 md:py-36 bg-surface/40 border-y border-border">
+    <section className="py-28 md:py-36 bg-surface/50 border-y border-border">
       <div className="container-page">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div>
@@ -272,9 +274,10 @@ function FeaturedWork() {
               className="group card-elite overflow-hidden flex flex-col"
             >
               <div className="aspect-[4/3] relative grain-bg bg-gradient-to-br from-surface-2 to-background overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,oklch(0.84_0.145_85_/_0.12),transparent_60%)]" />
                 <div className="absolute inset-0 flex items-end p-7">
                   <div>
-                    <div className="font-display text-5xl md:text-6xl leading-none text-cream">{c.metric}</div>
+                    <div className="font-display text-5xl md:text-6xl leading-none text-cream group-hover:text-gold-shine transition-all duration-500">{c.metric}</div>
                     <div className="mt-2 text-sm text-muted-foreground">{c.metricLabel}</div>
                   </div>
                 </div>
@@ -310,10 +313,10 @@ function Process() {
         <h2 className="h-section mt-5 max-w-2xl">A process built for accountability, not surprises.</h2>
 
         <div ref={ref} className="reveal mt-16 grid gap-10 md:grid-cols-4 relative">
-          <div className="hidden md:block absolute top-7 left-10 right-10 h-px bg-border" aria-hidden />
+          <div className="hidden md:block absolute top-7 left-10 right-10 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" aria-hidden />
           {steps.map((s) => (
             <div key={s.n} className="relative">
-              <div className="h-14 w-14 rounded-full border border-gold/40 bg-gold/10 text-gold grid place-items-center font-mono text-sm relative z-10">
+              <div className="h-14 w-14 rounded-full border border-gold/50 bg-gold/10 text-gold grid place-items-center font-mono text-sm relative z-10 shadow-[0_0_20px_-4px_var(--gold)]">
                 {s.n}
               </div>
               <h3 className="mt-7 text-xl font-display">{s.title}</h3>
@@ -379,6 +382,7 @@ function FinalCta() {
     <section className="py-28 md:py-36">
       <div className="container-page">
         <div className="card-elite p-10 md:p-16 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.84_0.145_85_/_0.12),transparent_55%)]" aria-hidden />
           <div className="max-w-3xl relative z-10">
             <span className="protocol-num">05 — INITIATE</span>
             <h2 className="h-section mt-5">
@@ -399,7 +403,7 @@ function FinalCta() {
             </div>
             <p className="mt-6 text-xs text-muted-foreground tracking-wide">We reply within 4 working hours.</p>
           </div>
-          <div className="pointer-events-none absolute -right-20 -bottom-20 w-[28rem] h-[28rem] rounded-full bg-gold/10 blur-3xl" aria-hidden />
+          <div className="pointer-events-none absolute -right-20 -bottom-20 w-[28rem] h-[28rem] rounded-full bg-gold/15 blur-3xl animate-ambient-glow" aria-hidden />
         </div>
       </div>
     </section>

@@ -26,14 +26,14 @@ export function SiteNav() {
     <header
       className={`sticky top-0 z-40 transition-all duration-500 ${
         scrolled
-          ? "backdrop-blur-xl bg-background/75 border-b border-border"
+          ? "backdrop-blur-xl bg-background/80 border-b border-border shadow-[0_1px_0_0_color-mix(in_oklab,var(--gold)_8%,transparent)]"
           : "bg-transparent"
       }`}
     >
       <div className="container-page flex items-center justify-between py-4">
         <Link to="/" className="flex items-baseline gap-2.5 group" aria-label="Naiyapudai home">
-          <span className="font-display text-2xl tracking-tight text-cream">Naiyapudai</span>
-          <span className="font-tamil text-base text-gold/80 group-hover:text-gold transition-colors">
+          <span className="font-display text-2xl tracking-tight text-cream group-hover:text-gold-shine transition-all duration-500">Naiyapudai</span>
+          <span className="font-tamil text-base text-gold/85 group-hover:text-gold transition-colors">
             நையப்புடை
           </span>
         </Link>
@@ -43,8 +43,8 @@ export function SiteNav() {
             <Link
               key={l.to}
               to={l.to}
-              className="px-3.5 py-2 text-sm text-muted-foreground hover:text-cream transition-colors"
-              activeProps={{ className: "text-cream" }}
+              className="px-3.5 py-2 text-sm text-muted-foreground hover:text-cream transition-colors relative after:absolute after:bottom-1 after:left-3.5 after:right-3.5 after:h-px after:bg-gold after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+              activeProps={{ className: "text-cream after:scale-x-100" }}
             >
               {l.label}
             </Link>
@@ -58,7 +58,7 @@ export function SiteNav() {
         </div>
 
         <button
-          className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-full border border-border text-cream"
+          className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-full border border-border text-cream hover:border-gold/40 hover:bg-gold/5 transition-colors"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
