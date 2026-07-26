@@ -51,27 +51,26 @@ const posts = [
 function BlogIndex() {
   return (
     <>
-      <section className="pt-16 md:pt-24 pb-8">
+      <section className="pt-16 md:pt-24 pb-8 grain-bg">
         <div className="container-page max-w-4xl">
-          <span className="eyebrow">Insights</span>
-          <h1 className="h-display mt-4">Playbooks, not think-pieces.</h1>
-          <p className="mt-6 text-lg text-muted-foreground">
+          <span className="protocol-num">INSIGHTS</span>
+          <h1 className="h-display mt-5">Playbooks, not think-pieces.</h1>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             Practical guides on SEO, Google Maps, web performance, and paid marketing —
             written for Tamil Nadu and Indian business owners who want to understand what
             they're paying for.
           </p>
-          <p className="mt-3 text-sm text-terracotta">{"{{TODO: publish full articles — currently listing planned cornerstone posts}}"}</p>
         </div>
       </section>
 
       <section className="py-16 md:py-24">
         <div className="container-page grid gap-6 md:grid-cols-2">
           {posts.map((p) => (
-            <article key={p.slug} className="card-soft p-8 flex flex-col group">
-              <div className="text-xs uppercase tracking-widest text-terracotta">{p.tag}</div>
-              <h2 className="mt-3 font-display text-2xl md:text-3xl leading-tight">{p.title}</h2>
-              <p className="mt-4 text-muted-foreground">{p.excerpt}</p>
-              <Link to="/contact" className="mt-6 inline-flex items-center gap-1 text-sm text-primary hover:gap-2 transition-all">
+            <article key={p.slug} className="card-elite p-8 flex flex-col group">
+              <div className="protocol-num">{p.tag}</div>
+              <h2 className="mt-4 font-display text-2xl md:text-3xl leading-tight">{p.title}</h2>
+              <p className="mt-4 text-muted-foreground leading-relaxed">{p.excerpt}</p>
+              <Link to="/contact" className="mt-6 inline-flex items-center gap-1.5 text-sm text-gold hover:gap-2.5 transition-all">
                 Coming soon — talk to us <ArrowUpRight size={14} />
               </Link>
             </article>

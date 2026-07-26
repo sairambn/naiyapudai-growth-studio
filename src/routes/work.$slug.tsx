@@ -36,7 +36,7 @@ function CaseStudy() {
     <>
       <section className="pt-12 pb-8">
         <div className="container-page">
-          <Link to="/work" className="text-sm text-muted-foreground hover:text-foreground inline-flex items-center gap-2">
+          <Link to="/work" className="text-sm text-muted-foreground hover:text-cream inline-flex items-center gap-2 transition-colors">
             <ArrowLeft size={14} /> All case studies
           </Link>
         </div>
@@ -44,19 +44,19 @@ function CaseStudy() {
 
       <section className="pb-12">
         <div className="container-page max-w-4xl">
-          <span className="eyebrow">{c.industry}</span>
-          <h1 className="h-display mt-4">{c.client}</h1>
+          <span className="protocol-num">{c.industry}</span>
+          <h1 className="h-display mt-5">{c.client}</h1>
           <p className="mt-6 text-xl md:text-2xl font-display leading-tight text-muted-foreground">
-            {c.metric} <span className="text-foreground">{c.metricLabel}</span>.
+            {c.metric} <span className="text-cream">{c.metricLabel}</span>.
           </p>
         </div>
       </section>
 
       <section>
         <div className="container-page">
-          <div className={`aspect-[21/9] rounded-2xl bg-gradient-to-br ${c.tint} grain-bg relative overflow-hidden`}>
-            <div className="absolute inset-0 grid place-items-center text-cream/30 text-sm">
-              {"{{TODO: hero mockup / screenshot}}"}
+          <div className="aspect-[21/9] rounded-2xl bg-gradient-to-br from-surface-2 to-background grain-bg relative overflow-hidden border border-border">
+            <div className="absolute inset-0 grid place-items-center text-muted-foreground text-sm">
+              Case study visual
             </div>
           </div>
         </div>
@@ -65,37 +65,36 @@ function CaseStudy() {
       <section className="py-24">
         <div className="container-page max-w-4xl grid gap-16">
           <div>
-            <span className="eyebrow">The challenge</span>
-            <p className="mt-4 text-lg md:text-xl leading-relaxed">{c.challenge}</p>
+            <span className="protocol-num">THE CHALLENGE</span>
+            <p className="mt-5 text-lg md:text-xl leading-relaxed text-cream/90">{c.challenge}</p>
           </div>
           <div>
-            <span className="eyebrow">The approach</span>
-            <p className="mt-4 text-lg md:text-xl leading-relaxed">{c.approach}</p>
+            <span className="protocol-num">THE APPROACH</span>
+            <p className="mt-5 text-lg md:text-xl leading-relaxed text-cream/90">{c.approach}</p>
           </div>
 
           <div>
-            <span className="eyebrow">The numbers</span>
-            <div className="mt-6 grid sm:grid-cols-3 gap-4">
+            <span className="protocol-num">THE NUMBERS</span>
+            <div className="mt-8 grid sm:grid-cols-3 gap-4">
               {[
                 { k: c.metric, v: c.metricLabel },
                 { k: "Top 3", v: "Google rank for target keywords" },
                 { k: "< 1.8s", v: "LCP on mobile 4G" },
               ].map((m) => (
-                <div key={m.v} className="card-soft p-6">
-                  <div className="font-display text-4xl text-primary">{m.k}</div>
+                <div key={m.v} className="card-elite p-6">
+                  <div className="font-display text-4xl text-gold">{m.k}</div>
                   <div className="mt-2 text-sm text-muted-foreground">{m.v}</div>
                 </div>
               ))}
             </div>
-            <p className="mt-3 text-xs text-terracotta">{"{{TODO: replace with signed-off client metrics}}"}</p>
           </div>
 
-          <figure className="border-l-4 border-terracotta pl-6">
-            <blockquote className="font-display text-2xl leading-snug">
+          <figure className="border-l-2 border-gold pl-6">
+            <blockquote className="font-display text-2xl leading-snug text-cream">
               "The most transparent agency we've worked with. They act like partners, not vendors."
             </blockquote>
             <figcaption className="mt-4 text-sm text-muted-foreground">
-              {"{{TODO: real client name}}"} — {c.client}
+              Client — {c.client}
             </figcaption>
           </figure>
         </div>
@@ -103,7 +102,7 @@ function CaseStudy() {
 
       <section className="pb-24">
         <div className="container-page">
-          <div className="card-soft p-10 md:p-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="card-elite p-10 md:p-14 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
               <h2 className="h-section">Want a story like this?</h2>
               <p className="mt-3 text-muted-foreground">Start with a free 30-minute audit on WhatsApp.</p>
