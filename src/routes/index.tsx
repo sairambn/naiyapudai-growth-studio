@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { useCallback, useRef } from "react";
+import { useCallback } from "react";
 import { useReveal } from "../lib/use-reveal";
 import {
-  useScrollProgress,
   useScrollLayers,
   easeOutCubic,
   smoothstep,
@@ -78,7 +77,6 @@ function HomePage() {
   );
 }
 
-/* ═══════════════ HERO — zoom out + fade, lerped layers ═══════════════ */
 function CinematicHero() {
   const { sectionRef, register } = useScrollLayers({ lerp: 0.1 });
 
@@ -185,14 +183,12 @@ function CinematicHero() {
   );
 }
 
-/* ═══════════════ PINNED horizontal filmstrip ═══════════════ */
 function PinnedStrip() {
   const { sectionRef, register } = useScrollLayers({ lerp: 0.12 });
 
   const trackRef = useCallback(
     (el: HTMLDivElement | null) => {
       register(el, (p) => {
-        // map mid progress to -55% translate
         const t = smoothstep(p);
         const x = -t * 55;
         return { transform: `translate3d(${x}%,0,0)` };
@@ -243,7 +239,6 @@ function PinnedStrip() {
   );
 }
 
-/* ═══════════════ ZOOM CHAPTER — cross into image, scale out ═══════════════ */
 function ZoomChapter({
   image,
   eyebrow,
@@ -268,7 +263,6 @@ function ZoomChapter({
   const imgRef = useCallback(
     (el: HTMLDivElement | null) => {
       register(el, (p) => {
-        // enter zoomed, settle, then slight drift out
         const t = easeOutCubic(p);
         const scale = 1.28 - t * 0.32;
         const opacity = 0.4 + Math.sin(smoothstep(p) * Math.PI) * 0.5;
@@ -348,7 +342,6 @@ function ZoomChapter({
   );
 }
 
-/* ═══════════════ PARALLAX PAIR ═══════════════ */
 function ParallaxBand() {
   const { sectionRef, register } = useScrollLayers({ lerp: 0.13 });
   const aRef = useCallback(
@@ -393,7 +386,6 @@ function ParallaxBand() {
   );
 }
 
-/* ═══════════════ SERVICES ═══════════════ */
 function ServicesGrid() {
   const ref = useReveal<HTMLDivElement>();
   const items = [
@@ -438,7 +430,6 @@ function ServicesGrid() {
   );
 }
 
-/* ═══════════════ FINAL CTA ═══════════════ */
 function FinalCta() {
   const { sectionRef, register } = useScrollLayers({ lerp: 0.1 });
   const imgRef = useCallback(
