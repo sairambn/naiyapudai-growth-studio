@@ -18,8 +18,8 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="h-display text-primary">404</h1>
-        <h2 className="mt-4 text-xl">This page has gone quiet.</h2>
+        <h1 className="h-display text-gold">404</h1>
+        <h2 className="mt-4 text-xl text-cream">This page has gone quiet.</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           The link is broken or the page has moved. Let's get you back on track.
         </p>
@@ -38,7 +38,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl">This page didn't load</h1>
+        <h1 className="text-xl text-cream">This page didn't load</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. Try again or head home.
         </p>
@@ -73,7 +73,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#F7F2E8" },
+      { name: "theme-color", content: "#0B0B0D" },
       { name: "author", content: "Naiyapudai" },
       { property: "og:site_name", content: "Naiyapudai · நையப்புடை" },
       { property: "og:type", content: "website" },
@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap",
       },
     ],
     scripts: [
@@ -108,7 +108,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-md"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-gold focus:text-ink focus:px-4 focus:py-2 focus:rounded-md"
         >
           Skip to content
         </a>
@@ -124,7 +124,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col bg-background text-foreground">
         <SiteNav />
         <main id="main" className="flex-1">
           <Outlet />

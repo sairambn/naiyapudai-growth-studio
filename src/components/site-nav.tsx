@@ -25,24 +25,26 @@ export function SiteNav() {
   return (
     <header
       className={`sticky top-0 z-40 transition-all duration-500 ${
-        scrolled ? "backdrop-blur-md bg-background/80 border-b border-border" : "bg-transparent"
+        scrolled
+          ? "backdrop-blur-xl bg-background/75 border-b border-border"
+          : "bg-transparent"
       }`}
     >
       <div className="container-page flex items-center justify-between py-4">
-        <Link to="/" className="flex items-baseline gap-2 group" aria-label="Naiyapudai home">
-          <span className="font-display text-2xl tracking-tight">Naiyapudai</span>
-          <span className="font-tamil text-lg text-primary/80 group-hover:text-primary transition-colors">
+        <Link to="/" className="flex items-baseline gap-2.5 group" aria-label="Naiyapudai home">
+          <span className="font-display text-2xl tracking-tight text-cream">Naiyapudai</span>
+          <span className="font-tamil text-base text-gold/80 group-hover:text-gold transition-colors">
             நையப்புடை
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
+        <nav className="hidden md:flex items-center gap-0.5" aria-label="Primary">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="px-3 py-2 text-sm text-foreground/80 hover:text-foreground transition-colors relative"
-              activeProps={{ className: "text-foreground" }}
+              className="px-3.5 py-2 text-sm text-muted-foreground hover:text-cream transition-colors"
+              activeProps={{ className: "text-cream" }}
             >
               {l.label}
             </Link>
@@ -50,13 +52,13 @@ export function SiteNav() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="https://wa.me/919999999999" className="btn-accent text-sm" aria-label="Chat with us on WhatsApp">
+          <a href="https://wa.me/919999999999" className="btn-accent text-sm !py-2.5 !px-5" aria-label="Chat with us on WhatsApp">
             <WhatsAppIcon /> WhatsApp us
           </a>
         </div>
 
         <button
-          className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-full border border-border"
+          className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-full border border-border text-cream"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -66,19 +68,19 @@ export function SiteNav() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-border bg-background">
-          <div className="container-page py-4 flex flex-col gap-1">
+        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
+          <div className="container-page py-5 flex flex-col gap-1">
             {links.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="py-3 px-2 text-base border-b border-border/60"
+                className="py-3.5 px-2 text-base border-b border-border/50 text-cream"
               >
                 {l.label}
               </Link>
             ))}
-            <a href="https://wa.me/919999999999" className="btn-accent mt-4 justify-center">
+            <a href="https://wa.me/919999999999" className="btn-accent mt-5 justify-center">
               <WhatsAppIcon /> WhatsApp us
             </a>
           </div>

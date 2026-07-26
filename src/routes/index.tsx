@@ -8,7 +8,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Naiyapudai · நையப்புடை — Websites that rank. Marketing that pays for itself." },
-      { name: "description", content: "Tamil Nadu's build+SEO+growth studio. We ship websites, rank them on Google & Maps, and run the ads and social that fill your pipeline." },
+      { name: "description", content: "Tamil Nadu's elite build+SEO+growth studio. We ship websites, rank them on Google & Maps, and run the ads and social that fill your pipeline." },
       { property: "og:title", content: "Naiyapudai · நையப்புடை — Websites that rank. Marketing that pays for itself." },
       { property: "og:description", content: "Web development, SEO, Google Maps and performance marketing built for Tamil Nadu SMB and D2C brands." },
       { property: "og:url", content: "/" },
@@ -61,48 +61,54 @@ function HomePage() {
 function Hero() {
   const revealRef = useReveal<HTMLDivElement>();
   return (
-    <section className="grain-bg relative overflow-hidden pt-14 md:pt-24 pb-24 md:pb-32">
+    <section className="grain-bg relative overflow-hidden pt-16 md:pt-28 pb-28 md:pb-36">
+      {/* subtle radial glow */}
+      <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-[radial-gradient(ellipse_at_center,oklch(0.82_0.12_85_/_0.08),transparent_70%)]" aria-hidden />
+
       <div className="container-page relative">
         <div ref={revealRef} className="reveal max-w-5xl">
-          <span className="eyebrow inline-flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-terracotta" />
-            <span className="font-tamil not-italic tracking-normal text-[0.85rem]">தமிழ்நாட்டின் டிஜிட்டல் ஸ்டூடியோ</span>
-            <span aria-hidden>·</span> Tamil Nadu digital studio
-          </span>
-          <h1 className="h-display mt-6">
-            Websites that <em className="text-terracotta not-italic">rank</em>.
+          <div className="flex flex-wrap items-center gap-3 mb-8">
+            <span className="protocol-num">00 — SYSTEM PROTOCOL // MMXXVI</span>
+            <span className="h-px w-8 bg-border" />
+            <span className="eyebrow !normal-case tracking-normal font-tamil text-[0.8rem]">தமிழ்நாட்டின் டிஜிட்டல் ஸ்டூடியோ</span>
+          </div>
+
+          <h1 className="h-display">
+            Websites that <em className="text-gold not-italic">rank</em>.
             <br />
-            Marketing that <em className="text-primary italic">pays for itself.</em>
+            Marketing that <em className="italic text-cream/90">pays for itself.</em>
           </h1>
-          <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl">
-            Naiyapudai is a Tamil Nadu studio that ships beautiful websites, ranks them on
-            Google Search & Maps, and runs the paid, social, and brand work that turns
-            traffic into paying customers — for local SMBs and D2C brands across India.
+
+          <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            Naiyapudai is the Tamil Nadu studio that ships elite websites, ranks them on
+            Google Search & Maps, and runs the paid, social, and brand systems that turn
+            traffic into paying customers — for serious SMBs and D2C brands.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-3">
+
+          <div className="mt-12 flex flex-wrap items-center gap-4">
             <a href="https://wa.me/919999999999?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
-               className="btn-accent">
+               className="btn-accent animate-glow-pulse">
               <WhatsAppIcon /> Chat with us — free audit
             </a>
             <Link to="/work" className="btn-ghost">
-              See our work <ArrowUpRight size={16} />
+              See the work <ArrowUpRight size={16} />
             </Link>
           </div>
         </div>
 
-        {/* Stat ticker */}
-        <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-border pt-10">
+        {/* Stat ticker — elite */}
+        <div className="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-border pt-12">
           {[
             { n: 40, s: "+", label: "Sites shipped" },
-            { n: 3, s: ".2×", label: "Avg. organic traffic growth" },
-            { n: 12, s: "+ industries", label: "Textile, retail, F&B, clinics, real-estate" },
-            { n: 98, s: "/100", label: "Avg. Lighthouse score" },
+            { n: 3, s: ".2×", label: "Avg. organic growth" },
+            { n: 12, s: "+", label: "Industries served" },
+            { n: 98, s: "/100", label: "Avg. Lighthouse" },
           ].map((k) => (
-            <div key={k.label}>
-              <div className="font-display text-4xl md:text-5xl text-foreground">
+            <div key={k.label} className="group">
+              <div className="font-display text-4xl md:text-5xl text-cream tracking-tight">
                 <AnimatedCounter to={k.n} suffix={k.s} />
               </div>
-              <p className="mt-2 text-sm text-muted-foreground">{k.label}</p>
+              <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{k.label}</p>
             </div>
           ))}
         </div>
@@ -121,12 +127,12 @@ function TrustBar() {
     "WhatsApp Business API",
   ];
   return (
-    <section aria-label="Credibility" className="border-y border-border bg-surface-2/40">
-      <div className="container-page py-6 overflow-hidden">
-        <div className="flex gap-12 whitespace-nowrap animate-marquee">
+    <section aria-label="Credibility" className="border-y border-border bg-surface/60">
+      <div className="container-page py-5 overflow-hidden">
+        <div className="flex gap-14 whitespace-nowrap animate-marquee">
           {[...items, ...items].map((t, i) => (
-            <span key={i} className="text-sm text-muted-foreground flex items-center gap-2">
-              <span className="h-1 w-1 rounded-full bg-terracotta" /> {t}
+            <span key={i} className="text-xs uppercase tracking-[0.18em] text-muted-foreground flex items-center gap-3">
+              <span className="h-1 w-1 rounded-full bg-gold" /> {t}
             </span>
           ))}
         </div>
@@ -138,6 +144,7 @@ function TrustBar() {
 const services = [
   {
     icon: Code2,
+    num: "01",
     title: "Web Design & Development",
     tamil: "வலைத்தள வடிவமைப்பு",
     body: "Fast, beautiful, SEO-ready sites built on Next.js, Shopify, or WordPress — with Core Web Vitals green on day one.",
@@ -145,6 +152,7 @@ const services = [
   },
   {
     icon: Search,
+    num: "02",
     title: "SEO & Google Maps",
     tamil: "SEO மற்றும் Google Maps",
     body: "Technical SEO, local ranking, and content that wins the searches your customers actually type — in English and Tamil.",
@@ -152,6 +160,7 @@ const services = [
   },
   {
     icon: Megaphone,
+    num: "03",
     title: "Performance Marketing",
     tamil: "விளம்பர மேலாண்மை",
     body: "Meta and Google ads with a single question in mind: what's the CAC, and is it lower than last month?",
@@ -159,6 +168,7 @@ const services = [
   },
   {
     icon: Sparkles,
+    num: "04",
     title: "Branding & Social",
     tamil: "பிராண்டிங் & சமூக ஊடகங்கள்",
     body: "Repositioning, identity systems, and always-on Instagram / YouTube Shorts that keep your brand top of mind.",
@@ -169,12 +179,12 @@ const services = [
 function Services() {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-28 md:py-36">
       <div className="container-page">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div>
-            <span className="eyebrow">What we do</span>
-            <h2 className="h-section mt-4 max-w-2xl">
+            <span className="protocol-num">01 — CAPABILITIES</span>
+            <h2 className="h-section mt-5 max-w-2xl">
               One studio for the site, the ranking, and the growth.
             </h2>
           </div>
@@ -184,17 +194,20 @@ function Services() {
         </div>
         <div ref={ref} className="reveal grid gap-5 md:grid-cols-2">
           {services.map((s) => (
-            <article key={s.title} className="card-soft p-8 group transition-transform duration-500 hover:-translate-y-1">
+            <article key={s.title} className="card-elite p-8 md:p-10 group">
               <div className="flex items-start justify-between gap-4">
-                <s.icon className="text-primary" size={28} strokeWidth={1.5} />
+                <div className="flex items-center gap-4">
+                  <span className="protocol-num">{s.num}</span>
+                  <s.icon className="text-gold" size={24} strokeWidth={1.4} />
+                </div>
                 <span className="font-tamil text-sm text-muted-foreground">{s.tamil}</span>
               </div>
-              <h3 className="mt-6 text-2xl">{s.title}</h3>
-              <p className="mt-3 text-muted-foreground">{s.body}</p>
-              <ul className="mt-6 space-y-2">
+              <h3 className="mt-8 text-2xl md:text-3xl font-display">{s.title}</h3>
+              <p className="mt-4 text-muted-foreground leading-relaxed">{s.body}</p>
+              <ul className="mt-8 space-y-2.5">
                 {s.bullets.map((b) => (
-                  <li key={b} className="text-sm flex items-center gap-2">
-                    <Check size={14} className="text-terracotta" /> {b}
+                  <li key={b} className="text-sm flex items-center gap-3 text-cream/90">
+                    <Check size={14} className="text-gold shrink-0" /> {b}
                   </li>
                 ))}
               </ul>
@@ -213,7 +226,6 @@ const cases = [
     industry: "D2C Handloom · Coimbatore",
     metric: "+186%",
     metricLabel: "organic traffic in 5 months",
-    tint: "from-primary/90 to-primary",
   },
   {
     slug: "chennai-dental",
@@ -221,7 +233,6 @@ const cases = [
     industry: "Multi-clinic · Chennai",
     metric: "3.4×",
     metricLabel: "Google Maps leads / month",
-    tint: "from-terracotta to-terracotta/70",
   },
   {
     slug: "madurai-realty",
@@ -229,24 +240,22 @@ const cases = [
     industry: "Real estate · Tamil Nadu",
     metric: "₹12.4 Cr",
     metricLabel: "attributed pipeline in 9 months",
-    tint: "from-ink to-primary",
   },
 ];
 
 function FeaturedWork() {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <section className="py-24 md:py-32 bg-surface-2/40 border-y border-border">
+    <section className="py-28 md:py-36 bg-surface/40 border-y border-border">
       <div className="container-page">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div>
-            <span className="eyebrow">Selected work</span>
-            <h2 className="h-section mt-4 max-w-2xl">
+            <span className="protocol-num">02 — SELECTED WORK</span>
+            <h2 className="h-section mt-5 max-w-2xl">
               Proof, not adjectives.
             </h2>
-            <p className="mt-3 text-muted-foreground max-w-xl">
+            <p className="mt-4 text-muted-foreground max-w-xl">
               Every project below is a live client with tracked, reported numbers.
-              {" "}<span className="text-terracotta">{"{{"}TODO: swap placeholders for signed-off metrics{"}}"}</span>
             </p>
           </div>
           <Link to="/work" className="btn-ghost self-start">
@@ -260,22 +269,22 @@ function FeaturedWork() {
               key={c.slug}
               to="/work/$slug"
               params={{ slug: c.slug }}
-              className="group card-soft overflow-hidden flex flex-col"
+              className="group card-elite overflow-hidden flex flex-col"
             >
-              <div className={`aspect-[4/3] bg-gradient-to-br ${c.tint} relative grain-bg overflow-hidden`}>
-                <div className="absolute inset-0 flex items-end p-6">
-                  <div className="text-cream">
-                    <div className="font-display text-5xl md:text-6xl leading-none">{c.metric}</div>
-                    <div className="mt-2 text-sm opacity-90">{c.metricLabel}</div>
+              <div className="aspect-[4/3] relative grain-bg bg-gradient-to-br from-surface-2 to-background overflow-hidden">
+                <div className="absolute inset-0 flex items-end p-7">
+                  <div>
+                    <div className="font-display text-5xl md:text-6xl leading-none text-cream">{c.metric}</div>
+                    <div className="mt-2 text-sm text-muted-foreground">{c.metricLabel}</div>
                   </div>
                 </div>
-                <div className="absolute top-5 right-5 h-10 w-10 rounded-full bg-cream/10 backdrop-blur grid place-items-center text-cream group-hover:bg-cream group-hover:text-primary transition">
+                <div className="absolute top-5 right-5 h-10 w-10 rounded-full border border-cream/20 bg-cream/5 backdrop-blur grid place-items-center text-cream group-hover:bg-gold group-hover:text-ink group-hover:border-gold transition-all duration-400">
                   <ArrowUpRight size={16} />
                 </div>
               </div>
               <div className="p-6">
-                <div className="text-xs text-muted-foreground">{c.industry}</div>
-                <div className="mt-1 text-lg">{c.client}</div>
+                <div className="text-xs uppercase tracking-widest text-muted-foreground">{c.industry}</div>
+                <div className="mt-2 text-lg font-display">{c.client}</div>
               </div>
             </Link>
           ))}
@@ -295,25 +304,25 @@ const steps = [
 function Process() {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-28 md:py-36">
       <div className="container-page">
-        <span className="eyebrow">How we work</span>
-        <h2 className="h-section mt-4 max-w-2xl">A process built for accountability, not surprises.</h2>
+        <span className="protocol-num">03 — OPERATING SYSTEM</span>
+        <h2 className="h-section mt-5 max-w-2xl">A process built for accountability, not surprises.</h2>
 
-        <div ref={ref} className="reveal mt-14 grid gap-8 md:grid-cols-4 relative">
-          <div className="hidden md:block absolute top-6 left-8 right-8 h-px bg-border" aria-hidden />
+        <div ref={ref} className="reveal mt-16 grid gap-10 md:grid-cols-4 relative">
+          <div className="hidden md:block absolute top-7 left-10 right-10 h-px bg-border" aria-hidden />
           {steps.map((s) => (
             <div key={s.n} className="relative">
-              <div className="h-12 w-12 rounded-full bg-primary text-primary-foreground grid place-items-center font-display text-lg relative z-10">
+              <div className="h-14 w-14 rounded-full border border-gold/40 bg-gold/10 text-gold grid place-items-center font-mono text-sm relative z-10">
                 {s.n}
               </div>
-              <h3 className="mt-6 text-xl">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.body}</p>
+              <h3 className="mt-7 text-xl font-display">{s.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>
 
-        <Link to="/process" className="btn-ghost mt-12">
+        <Link to="/process" className="btn-ghost mt-14">
           See the full process <ArrowUpRight size={16} />
         </Link>
       </div>
@@ -342,21 +351,20 @@ const testimonials = [
 function Testimonials() {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <section className="py-24 md:py-32 bg-primary text-primary-foreground grain-bg">
+    <section className="py-28 md:py-36 bg-surface border-y border-border grain-bg">
       <div className="container-page">
-        <span className="eyebrow text-primary-foreground/70">What clients say</span>
-        <h2 className="h-section mt-4 max-w-3xl text-primary-foreground">
-          <span className="font-tamil text-primary-foreground/80">"</span>
+        <span className="protocol-num">04 — CLIENT SIGNALS</span>
+        <h2 className="h-section mt-5 max-w-3xl">
           The kind of partner Tamil Nadu businesses have been waiting for.
         </h2>
 
-        <div ref={ref} className="reveal mt-14 grid gap-6 md:grid-cols-3">
+        <div ref={ref} className="reveal mt-16 grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
-            <figure key={i} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 backdrop-blur p-8">
-              <blockquote className="font-display text-xl leading-snug">"{t.quote}"</blockquote>
-              <figcaption className="mt-6 text-sm text-primary-foreground/80">
-                <div className="text-primary-foreground">{t.name}</div>
-                <div>{t.role}</div>
+            <figure key={i} className="card-elite p-8 md:p-9">
+              <blockquote className="font-display text-xl leading-snug text-cream/95">"{t.quote}"</blockquote>
+              <figcaption className="mt-8 text-sm">
+                <div className="text-cream">{t.name}</div>
+                <div className="text-muted-foreground mt-0.5">{t.role}</div>
               </figcaption>
             </figure>
           ))}
@@ -368,19 +376,19 @@ function Testimonials() {
 
 function FinalCta() {
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-28 md:py-36">
       <div className="container-page">
-        <div className="card-soft p-10 md:p-16 relative overflow-hidden">
-          <div className="max-w-3xl relative">
-            <span className="eyebrow">Let's talk</span>
-            <h2 className="h-section mt-4">
+        <div className="card-elite p-10 md:p-16 relative overflow-hidden">
+          <div className="max-w-3xl relative z-10">
+            <span className="protocol-num">05 — INITIATE</span>
+            <h2 className="h-section mt-5">
               Ready to make your business impossible to ignore online?
             </h2>
-            <p className="mt-6 text-lg text-muted-foreground">
+            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               One 30-minute call. We look at your site, your search presence, and your ads —
               and tell you exactly what to fix first. No slides, no pitch. Free.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-wrap gap-4">
               <a href="https://wa.me/919999999999?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
                  className="btn-accent">
                 <WhatsAppIcon /> WhatsApp us now
@@ -389,9 +397,9 @@ function FinalCta() {
                 Or send a message <ArrowUpRight size={16} />
               </Link>
             </div>
-            <p className="mt-6 text-xs text-muted-foreground">We reply within 4 working hours.</p>
+            <p className="mt-6 text-xs text-muted-foreground tracking-wide">We reply within 4 working hours.</p>
           </div>
-          <div className="pointer-events-none absolute -right-24 -bottom-24 w-96 h-96 rounded-full bg-terracotta/20 blur-3xl" aria-hidden />
+          <div className="pointer-events-none absolute -right-20 -bottom-20 w-[28rem] h-[28rem] rounded-full bg-gold/10 blur-3xl" aria-hidden />
         </div>
       </div>
     </section>
