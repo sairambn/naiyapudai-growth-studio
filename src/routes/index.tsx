@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Search, Code2, Megaphone, Sparkles, Check } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
 import { useReveal } from "../lib/use-reveal";
 import { WhatsAppIcon } from "../components/site-nav";
 
@@ -28,74 +27,12 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:url", content: "https://naiyapudai.vercel.app/" },
       { property: "og:locale", content: "en_IN" },
+      { name: "robots", content: "index, follow" },
     ],
     links: [{ rel: "canonical", href: "https://naiyapudai.vercel.app/" }],
   }),
   component: HomePage,
 });
-
-function AnimatedCounter({
-  to,
-  suffix = "",
-  duration = 1400,
-}: {
-  to: number;
-  suffix?: string;
-  duration?: number;
-}) {
-  const ref = useRef<HTMLSpanElement>(null);
-  // Always start at final value → zero layout shift on first paint / hydration.
-  const [n, setN] = useState(to);
-  const animated = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || animated.current) return;
-
-    let raf = 0;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0]?.isIntersecting || animated.current) return;
-        animated.current = true;
-        io.disconnect();
-
-        // Animate upward without ever going below the reserved width.
-        // We temporarily show intermediate values but the container width is fixed.
-        const start = performance.now();
-        const step = (now: number) => {
-          const t = Math.min(1, (now - start) / duration);
-          const eased = 1 - Math.pow(1 - t, 3);
-          setN(Math.round(eased * to));
-          if (t < 1) raf = requestAnimationFrame(step);
-        };
-        // Start from 0 only after we know the container is already sized.
-        setN(0);
-        raf = requestAnimationFrame(step);
-      },
-      { threshold: 0.35 },
-    );
-    io.observe(el);
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-    };
-  }, [to, duration]);
-
-  // Reserve enough space for the longest expected string (e.g. "100%", "4.9★", "90+")
-  const ch = Math.max(String(to).length + suffix.length, 3) + 0.6;
-
-  return (
-    <span
-      ref={ref}
-      className="inline-block tabular-nums text-left"
-      style={{ minWidth: `${ch}ch` }}
-      aria-label={`${to}${suffix}`}
-    >
-      {n}
-      {suffix}
-    </span>
-  );
-}
 
 function HomePage() {
   return (
@@ -133,7 +70,7 @@ function Hero() {
           <div className="flex flex-wrap items-center gap-3 mb-8">
             <span className="protocol-num">00 — SYSTEM PROTOCOL // MMXXVI</span>
             <span className="h-px w-10 bg-gradient-to-r from-gold/60 to-transparent" aria-hidden />
-            <span className="eyebrow !normal-case tracking-normal font-tamil text-[0.8rem] text-gold-light/90">
+            <span className="eyebrow !normal-case tracking-normal font-tamil text-[0.8rem] text-gold-light">
               தமிழ்நாட்டின் டிஜிட்டல் ஸ்டூடியோ
             </span>
           </div>
@@ -164,16 +101,17 @@ function Hero() {
           </div>
         </div>
 
+        {/* Static final values — zero CLS. No JS counter animation. */}
         <div className="mt-20 md:mt-28 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-border pt-12">
           {[
-            { n: 1, s: "", label: "Live client engagement" },
-            { n: 100, s: "%", label: "Focus: web + SEO + Maps" },
-            { n: 4, s: ".9★", label: "Client public rating" },
-            { n: 90, s: "+", label: "Target Lighthouse score" },
+            { value: "1", label: "Live client engagement" },
+            { value: "100%", label: "Focus: web + SEO + Maps" },
+            { value: "4.9★", label: "Client public rating" },
+            { value: "90+", label: "Target Lighthouse score" },
           ].map((k) => (
             <div key={k.label} className="group">
-              <div className="font-display text-4xl md:text-5xl text-cream tracking-tight group-hover:text-gold-shine transition-all duration-500 flex">
-                <AnimatedCounter to={k.n} suffix={k.s} />
+              <div className="font-display text-4xl md:text-5xl text-cream tracking-tight group-hover:text-gold-shine transition-colors duration-500 tabular-nums">
+                {k.value}
               </div>
               <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{k.label}</p>
             </div>
@@ -270,7 +208,7 @@ function Services() {
                   <span className="protocol-num">{s.num}</span>
                   <s.icon className="text-gold" size={24} strokeWidth={1.4} aria-hidden />
                 </div>
-                <span className="font-tamil text-sm text-gold-light/80">{s.tamil}</span>
+                <span className="font-tamil text-sm text-gold-light">{s.tamil}</span>
               </div>
               <h3 className="mt-8 text-2xl md:text-3xl font-display">{s.title}</h3>
               <p className="mt-4 text-muted-foreground leading-relaxed">{s.body}</p>
@@ -331,13 +269,16 @@ function FeaturedWork() {
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,oklch(0.84_0.145_85_/_0.12),transparent_60%)]" aria-hidden />
                 <div className="absolute inset-0 flex items-end p-7">
                   <div>
-                    <div className="font-display text-5xl md:text-6xl leading-none text-cream group-hover:text-gold-shine transition-all duration-500">
+                    <div className="font-display text-5xl md:text-6xl leading-none text-cream group-hover:text-gold-shine transition-colors duration-500">
                       {c.metric}
                     </div>
                     <div className="mt-2 text-sm text-muted-foreground">{c.metricLabel}</div>
                   </div>
                 </div>
-                <div className="absolute top-5 right-5 h-10 w-10 rounded-full border border-cream/20 bg-cream/5 backdrop-blur grid place-items-center text-cream group-hover:bg-gold group-hover:text-ink group-hover:border-gold transition-all duration-400" aria-hidden>
+                <div
+                  className="absolute top-5 right-5 h-10 w-10 rounded-full border border-cream/20 bg-cream/5 backdrop-blur grid place-items-center text-cream group-hover:bg-gold group-hover:text-ink group-hover:border-gold transition-all duration-400"
+                  aria-hidden
+                >
                   <ArrowUpRight size={16} />
                 </div>
               </div>

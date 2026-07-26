@@ -8,9 +8,10 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "A Tamil Nadu digital studio building the sites, SEO, and marketing engines behind local SMBs and D2C brands across India." },
       { property: "og:title", content: "About — Naiyapudai" },
       { property: "og:description", content: "Why the name நையப்புடை, who we are, and who we build for." },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: "https://naiyapudai.vercel.app/about" },
+      { name: "robots", content: "index, follow" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: "https://naiyapudai.vercel.app/about" }],
   }),
   component: AboutPage,
 });
@@ -85,8 +86,8 @@ function AboutPage() {
         <div className="container-page">
           <div className="card-elite p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <h2 className="text-2xl font-display">Want to work with us?</h2>
-            <Link to="/contact" className="btn-primary">
-              Start a project <ArrowUpRight size={16} />
+            <Link to="/contact" className="btn-primary" aria-label="Start a project with Naiyapudai">
+              Start a project <ArrowUpRight size={16} aria-hidden />
             </Link>
           </div>
         </div>

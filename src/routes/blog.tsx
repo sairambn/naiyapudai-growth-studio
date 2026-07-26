@@ -8,9 +8,10 @@ export const Route = createFileRoute("/blog")({
       { name: "description", content: "Practical guides on local SEO, Google Maps, website performance, and digital marketing for Tamil Nadu SMBs and D2C brands." },
       { property: "og:title", content: "Insights — Naiyapudai" },
       { property: "og:description", content: "Local SEO, website performance, and marketing playbooks for Indian SMBs." },
-      { property: "og:url", content: "/blog" },
+      { property: "og:url", content: "https://naiyapudai.vercel.app/blog" },
+      { name: "robots", content: "index, follow" },
     ],
-    links: [{ rel: "canonical", href: "/blog" }],
+    links: [{ rel: "canonical", href: "https://naiyapudai.vercel.app/blog" }],
   }),
   component: BlogIndex,
 });
@@ -70,8 +71,12 @@ function BlogIndex() {
               <div className="protocol-num">{p.tag}</div>
               <h2 className="mt-4 font-display text-2xl md:text-3xl leading-tight">{p.title}</h2>
               <p className="mt-4 text-muted-foreground leading-relaxed">{p.excerpt}</p>
-              <Link to="/contact" className="mt-6 inline-flex items-center gap-1.5 text-sm text-gold hover:gap-2.5 transition-all">
-                Coming soon — talk to us <ArrowUpRight size={14} />
+              <Link
+                to="/contact"
+                className="mt-6 inline-flex items-center gap-1.5 text-sm text-gold hover:gap-2.5 transition-all"
+                aria-label={`${p.title} — coming soon, talk to us`}
+              >
+                Coming soon — talk to us <ArrowUpRight size={14} aria-hidden />
               </Link>
             </article>
           ))}

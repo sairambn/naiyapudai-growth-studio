@@ -50,7 +50,6 @@
 :root {
   --radius: 0.625rem;
 
-  /* Grand Goldy Best palette — richer, more luminous */
   --cream: oklch(0.97 0.012 90);
   --ink: oklch(0.09 0.012 280);
   --gold: oklch(0.84 0.145 85);
@@ -70,8 +69,8 @@
   --secondary: oklch(0.19 0.015 280);
   --secondary-foreground: var(--cream);
   --muted: oklch(0.21 0.015 280);
-  /* Bumped for stronger AA contrast against near-black background */
-  --muted-foreground: oklch(0.72 0.02 280);
+  /* Strong AA contrast on near-black (~7:1+) */
+  --muted-foreground: oklch(0.74 0.018 280);
   --accent: var(--gold);
   --accent-foreground: oklch(0.09 0.012 280);
   --destructive: oklch(0.55 0.22 27);

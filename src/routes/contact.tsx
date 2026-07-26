@@ -10,9 +10,10 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Book a free 30-minute growth audit on WhatsApp, or send us a brief. We reply within 4 working hours." },
       { property: "og:title", content: "Contact Naiyapudai" },
       { property: "og:description", content: "WhatsApp us or send a brief. Free 30-minute growth audit." },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: "https://naiyapudai.vercel.app/contact" },
+      { name: "robots", content: "index, follow" },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://naiyapudai.vercel.app/contact" }],
   }),
   component: ContactPage,
 });
@@ -44,6 +45,7 @@ function ContactPage() {
             <a
               href="https://wa.me/917603976686?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
               className="btn-accent"
+              aria-label="WhatsApp Naiyapudai at +91 76039 76686"
             >
               <WhatsAppIcon /> WhatsApp: +91 76039 76686
             </a>
@@ -109,7 +111,7 @@ function ContactPage() {
                 Send message
               </button>
               {status === "sent" && (
-                <p className="text-sm text-gold">
+                <p className="text-sm text-gold" role="status">
                   Got it — we'll be in touch within 4 working hours. For faster response, WhatsApp us.
                 </p>
               )}
