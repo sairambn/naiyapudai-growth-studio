@@ -42,10 +42,10 @@ function ContactPage() {
           </p>
           <div className="mt-8">
             <a
-              href="https://wa.me/919999999999?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
+              href="https://wa.me/917603976686?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
               className="btn-accent"
             >
-              <WhatsAppIcon /> WhatsApp: +91 99999 99999
+              <WhatsAppIcon /> WhatsApp: +91 76039 76686
             </a>
           </div>
         </div>
@@ -123,8 +123,8 @@ function ContactPage() {
             <div className="card-elite p-6">
               <h3 className="text-lg font-display">Reach us directly</h3>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li><a className="hover:text-cream transition-colors" href="https://wa.me/919999999999">WhatsApp: +91 99999 99999</a></li>
-                <li><a className="hover:text-cream transition-colors" href="mailto:hello@naiyapudai.com">hello@naiyapudai.com</a></li>
+                <li><a className="hover:text-cream transition-colors" href="https://wa.me/917603976686">WhatsApp: +91 76039 76686</a></li>
+                <li><a className="hover:text-cream transition-colors" href="mailto:contactnayyapudai@gmail.com">contactnayyapudai@gmail.com</a></li>
                 <li>Tamil Nadu, India</li>
               </ul>
             </div>

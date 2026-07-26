@@ -52,7 +52,7 @@ export function SiteNav() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="https://wa.me/919999999999" className="btn-accent text-sm !py-2.5 !px-5" aria-label="Chat with us on WhatsApp">
+          <a href="https://wa.me/917603976686" className="btn-accent text-sm !py-2.5 !px-5" aria-label="Chat with us on WhatsApp">
             <WhatsAppIcon /> WhatsApp us
           </a>
         </div>
@@ -80,7 +80,7 @@ export function SiteNav() {
                 {l.label}
               </Link>
             ))}
-            <a href="https://wa.me/919999999999" className="btn-accent mt-5 justify-center">
+            <a href="https://wa.me/917603976686" className="btn-accent mt-5 justify-center">
               <WhatsAppIcon /> WhatsApp us
             </a>
           </div>

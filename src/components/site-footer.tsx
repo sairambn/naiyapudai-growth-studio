@@ -13,7 +13,7 @@ export function SiteFooter() {
           <p className="mt-5 text-muted-foreground max-w-sm leading-relaxed">
             The Tamil Nadu studio that ships the site, ranks it on Google & Maps, and runs the marketing that fills your pipeline.
           </p>
-          <a href="https://wa.me/919999999999" className="btn-accent mt-7">
+          <a href="https://wa.me/917603976686" className="btn-accent mt-7">
             Start on WhatsApp
           </a>
         </div>
@@ -39,8 +39,8 @@ export function SiteFooter() {
         <div className="md:col-span-3">
           <h4 className="eyebrow mb-5 text-gold/80">Reach us</h4>
           <ul className="space-y-2.5 text-sm text-muted-foreground">
-            <li><a href="https://wa.me/919999999999" className="hover:text-cream transition-colors">WhatsApp: +91 99999 99999</a></li>
-            <li><a href="mailto:hello@naiyapudai.com" className="hover:text-cream transition-colors">hello@naiyapudai.com</a></li>
+            <li><a href="https://wa.me/917603976686" className="hover:text-cream transition-colors">WhatsApp: +91 76039 76686</a></li>
+            <li><a href="mailto:contactnayyapudai@gmail.com" className="hover:text-cream transition-colors">contactnayyapudai@gmail.com</a></li>
             <li>Tamil Nadu, India</li>
           </ul>
         </div>

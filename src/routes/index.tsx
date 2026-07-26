@@ -88,7 +88,7 @@ function Hero() {
           </p>
 
           <div className="mt-12 flex flex-wrap items-center gap-4">
-            <a href="https://wa.me/919999999999?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
+            <a href="https://wa.me/917603976686?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
                className="btn-accent animate-glow-pulse">
               <WhatsAppIcon /> Chat with us — free audit
             </a>
@@ -393,7 +393,7 @@ function FinalCta() {
               and tell you exactly what to fix first. No slides, no pitch. Free.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href="https://wa.me/919999999999?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
+              <a href="https://wa.me/917603976686?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
                  className="btn-accent">
                 <WhatsAppIcon /> WhatsApp us now
               </a>
