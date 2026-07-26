@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-// TODO: replace with your project URL once a project name or custom domain is set.
-const BASE_URL = "";
+const BASE_URL = "https://naiyapudai.vercel.app";
 
 interface SitemapEntry {
   path: string;
@@ -18,9 +17,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/services", changefreq: "monthly", priority: "0.9" },
           { path: "/work", changefreq: "monthly", priority: "0.9" },
-          { path: "/work/kovai-textiles", changefreq: "yearly", priority: "0.7" },
-          { path: "/work/chennai-dental", changefreq: "yearly", priority: "0.7" },
-          { path: "/work/madurai-realty", changefreq: "yearly", priority: "0.7" },
+          { path: "/work/total-fitness-studio", changefreq: "monthly", priority: "0.85" },
           { path: "/process", changefreq: "monthly", priority: "0.7" },
           { path: "/about", changefreq: "monthly", priority: "0.6" },
           { path: "/blog", changefreq: "weekly", priority: "0.7" },
