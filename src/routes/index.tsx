@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Tamil Nadu digital growth studio. We build high-performance websites, ranks them on Google Search & Maps, and run marketing that converts — for SMBs and local brands. First client: Total Fitness Studio Chromepet.",
+          "Tamil Nadu digital growth studio. We build high-performance websites, rank them on Google Search & Maps, and run marketing that converts — for SMBs and local brands. First client: Total Fitness Studio Chromepet.",
       },
       {
         property: "og:title",
@@ -26,9 +26,10 @@ export const Route = createFileRoute("/")({
         content:
           "Web development, local SEO, Google Maps, and performance marketing for Tamil Nadu businesses.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://naiyapudai.vercel.app/" },
+      { property: "og:locale", content: "en_IN" },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://naiyapudai.vercel.app/" }],
   }),
   component: HomePage,
 });
@@ -43,8 +44,7 @@ function AnimatedCounter({
   duration?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  // Start at final value so SSR + first paint have correct width (no CLS).
-  // Animate only after the element is in view.
+  // Always start at final value → zero layout shift on first paint / hydration.
   const [n, setN] = useState(to);
   const animated = useRef(false);
 
@@ -52,36 +52,44 @@ function AnimatedCounter({
     const el = ref.current;
     if (!el || animated.current) return;
 
+    let raf = 0;
     const io = new IntersectionObserver(
       (entries) => {
         if (!entries[0]?.isIntersecting || animated.current) return;
         animated.current = true;
         io.disconnect();
 
-        // Brief reset then ease up — container width is already reserved.
-        setN(0);
+        // Animate upward without ever going below the reserved width.
+        // We temporarily show intermediate values but the container width is fixed.
         const start = performance.now();
-        let raf = 0;
         const step = (now: number) => {
           const t = Math.min(1, (now - start) / duration);
           const eased = 1 - Math.pow(1 - t, 3);
           setN(Math.round(eased * to));
           if (t < 1) raf = requestAnimationFrame(step);
         };
+        // Start from 0 only after we know the container is already sized.
+        setN(0);
         raf = requestAnimationFrame(step);
-        return () => cancelAnimationFrame(raf);
       },
       { threshold: 0.35 },
     );
     io.observe(el);
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
   }, [to, duration]);
+
+  // Reserve enough space for the longest expected string (e.g. "100%", "4.9★", "90+")
+  const ch = Math.max(String(to).length + suffix.length, 3) + 0.6;
 
   return (
     <span
       ref={ref}
-      className="inline-block tabular-nums text-right"
-      style={{ minWidth: "3.2ch" }}
+      className="inline-block tabular-nums text-left"
+      style={{ minWidth: `${ch}ch` }}
+      aria-label={`${to}${suffix}`}
     >
       {n}
       {suffix}
@@ -124,7 +132,7 @@ function Hero() {
         <div ref={revealRef} className="reveal max-w-5xl">
           <div className="flex flex-wrap items-center gap-3 mb-8">
             <span className="protocol-num">00 — SYSTEM PROTOCOL // MMXXVI</span>
-            <span className="h-px w-10 bg-gradient-to-r from-gold/60 to-transparent" />
+            <span className="h-px w-10 bg-gradient-to-r from-gold/60 to-transparent" aria-hidden />
             <span className="eyebrow !normal-case tracking-normal font-tamil text-[0.8rem] text-gold-light/90">
               தமிழ்நாட்டின் டிஜிட்டல் ஸ்டூடியோ
             </span>
@@ -146,11 +154,12 @@ function Hero() {
             <a
               href="https://wa.me/917603976686?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
               className="btn-accent animate-glow-pulse"
+              aria-label="Chat with Naiyapudai on WhatsApp for a free growth audit"
             >
               <WhatsAppIcon /> Chat with us — free audit
             </a>
-            <Link to="/work" className="btn-ghost">
-              See the work <ArrowUpRight size={16} />
+            <Link to="/work" className="btn-ghost" aria-label="View our selected work and case studies">
+              See the work <ArrowUpRight size={16} aria-hidden />
             </Link>
           </div>
         </div>
@@ -185,7 +194,7 @@ function TrustBar() {
     "WhatsApp conversion paths",
   ];
   return (
-    <section aria-label="Credibility" className="border-y border-border bg-surface/70">
+    <section aria-label="Credibility signals" className="border-y border-border bg-surface/70">
       <div className="container-page py-5 overflow-hidden">
         <div className="flex gap-14 whitespace-nowrap animate-marquee will-change-transform">
           {[...items, ...items].map((t, i) => (
@@ -193,7 +202,7 @@ function TrustBar() {
               key={i}
               className="text-xs uppercase tracking-[0.18em] text-muted-foreground flex items-center gap-3"
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_8px_var(--gold)]" /> {t}
+              <span className="h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_8px_var(--gold)]" aria-hidden /> {t}
             </span>
           ))}
         </div>
@@ -249,8 +258,8 @@ function Services() {
               One studio for the site, the ranking, and the growth.
             </h2>
           </div>
-          <Link to="/services" className="btn-ghost self-start">
-            All services <ArrowUpRight size={16} />
+          <Link to="/services" className="btn-ghost self-start" aria-label="View all services">
+            All services <ArrowUpRight size={16} aria-hidden />
           </Link>
         </div>
         <div ref={ref} className="reveal grid gap-5 md:grid-cols-2">
@@ -259,16 +268,16 @@ function Services() {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-center gap-4">
                   <span className="protocol-num">{s.num}</span>
-                  <s.icon className="text-gold" size={24} strokeWidth={1.4} />
+                  <s.icon className="text-gold" size={24} strokeWidth={1.4} aria-hidden />
                 </div>
-                <span className="font-tamil text-sm text-gold-light/70">{s.tamil}</span>
+                <span className="font-tamil text-sm text-gold-light/80">{s.tamil}</span>
               </div>
               <h3 className="mt-8 text-2xl md:text-3xl font-display">{s.title}</h3>
               <p className="mt-4 text-muted-foreground leading-relaxed">{s.body}</p>
               <ul className="mt-8 space-y-2.5">
                 {s.bullets.map((b) => (
                   <li key={b} className="text-sm flex items-center gap-3 text-cream/90">
-                    <Check size={14} className="text-gold shrink-0" /> {b}
+                    <Check size={14} className="text-gold shrink-0" aria-hidden /> {b}
                   </li>
                 ))}
               </ul>
@@ -304,8 +313,8 @@ function FeaturedWork() {
               Our first order, shipped end-to-end.
             </p>
           </div>
-          <Link to="/work" className="btn-ghost self-start">
-            Case study <ArrowUpRight size={16} />
+          <Link to="/work" className="btn-ghost self-start" aria-label="Read the Total Fitness Studio case study">
+            Case study <ArrowUpRight size={16} aria-hidden />
           </Link>
         </div>
 
@@ -316,9 +325,10 @@ function FeaturedWork() {
               to="/work/$slug"
               params={{ slug: c.slug }}
               className="group card-elite overflow-hidden flex flex-col"
+              aria-label={`${c.client} case study — ${c.metric} ${c.metricLabel}`}
             >
               <div className="aspect-[16/9] relative grain-bg bg-gradient-to-br from-surface-2 to-background overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,oklch(0.84_0.145_85_/_0.12),transparent_60%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,oklch(0.84_0.145_85_/_0.12),transparent_60%)]" aria-hidden />
                 <div className="absolute inset-0 flex items-end p-7">
                   <div>
                     <div className="font-display text-5xl md:text-6xl leading-none text-cream group-hover:text-gold-shine transition-all duration-500">
@@ -327,7 +337,7 @@ function FeaturedWork() {
                     <div className="mt-2 text-sm text-muted-foreground">{c.metricLabel}</div>
                   </div>
                 </div>
-                <div className="absolute top-5 right-5 h-10 w-10 rounded-full border border-cream/20 bg-cream/5 backdrop-blur grid place-items-center text-cream group-hover:bg-gold group-hover:text-ink group-hover:border-gold transition-all duration-400">
+                <div className="absolute top-5 right-5 h-10 w-10 rounded-full border border-cream/20 bg-cream/5 backdrop-blur grid place-items-center text-cream group-hover:bg-gold group-hover:text-ink group-hover:border-gold transition-all duration-400" aria-hidden>
                   <ArrowUpRight size={16} />
                 </div>
               </div>
@@ -390,8 +400,8 @@ function Process() {
           ))}
         </div>
 
-        <Link to="/process" className="btn-ghost mt-14">
-          See the full process <ArrowUpRight size={16} />
+        <Link to="/process" className="btn-ghost mt-14" aria-label="See the full operating process">
+          See the full process <ArrowUpRight size={16} aria-hidden />
         </Link>
       </div>
     </section>
@@ -457,11 +467,12 @@ function FinalCta() {
               <a
                 href="https://wa.me/917603976686?text=Hi%20Naiyapudai%2C%20I'd%20like%20a%20free%20growth%20audit."
                 className="btn-accent"
+                aria-label="WhatsApp Naiyapudai for a free growth audit"
               >
                 <WhatsAppIcon /> WhatsApp us now
               </a>
-              <Link to="/contact" className="btn-ghost">
-                Or send a message <ArrowUpRight size={16} />
+              <Link to="/contact" className="btn-ghost" aria-label="Send a message via the contact form">
+                Or send a message <ArrowUpRight size={16} aria-hidden />
               </Link>
             </div>
             <p className="mt-6 text-xs text-muted-foreground tracking-wide">

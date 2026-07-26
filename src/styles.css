@@ -53,13 +53,13 @@
   /* Grand Goldy Best palette — richer, more luminous */
   --cream: oklch(0.97 0.012 90);
   --ink: oklch(0.09 0.012 280);
-  --gold: oklch(0.84 0.145 85);           /* brighter, richer gold */
-  --gold-light: oklch(0.92 0.09 90);      /* soft champagne */
-  --gold-dark: oklch(0.68 0.12 75);       /* deep antique gold */
+  --gold: oklch(0.84 0.145 85);
+  --gold-light: oklch(0.92 0.09 90);
+  --gold-dark: oklch(0.68 0.12 75);
   --primary: oklch(0.97 0.012 90);
   --primary-foreground: oklch(0.09 0.012 280);
 
-  --background: oklch(0.09 0.01 280);      /* deeper black */
+  --background: oklch(0.09 0.01 280);
   --foreground: var(--cream);
   --surface: oklch(0.135 0.012 280);
   --surface-2: oklch(0.17 0.014 280);
@@ -70,7 +70,8 @@
   --secondary: oklch(0.19 0.015 280);
   --secondary-foreground: var(--cream);
   --muted: oklch(0.21 0.015 280);
-  --muted-foreground: oklch(0.62 0.02 280);
+  /* Bumped for stronger AA contrast against near-black background */
+  --muted-foreground: oklch(0.72 0.02 280);
   --accent: var(--gold);
   --accent-foreground: oklch(0.09 0.012 280);
   --destructive: oklch(0.55 0.22 27);
@@ -117,7 +118,6 @@
   }
 }
 
-/* Reduce layout shift from late-loading web fonts */
 @supports (font-size-adjust: 1) {
   body {
     font-size-adjust: 0.5;
@@ -244,7 +244,6 @@
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.9s var(--ease-signature), transform 0.9s var(--ease-signature);
-  /* transform/opacity do not affect layout → zero CLS contribution */
   will-change: opacity, transform;
 }
 @utility reveal-in {
