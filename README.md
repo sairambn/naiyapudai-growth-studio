@@ -4,8 +4,6 @@
 
 Naiyapudai is a Tamil Nadu digital growth studio that builds beautiful, high-performance websites, ranks them on Google Search & Maps, and runs the paid + social work that turns traffic into paying customers — for local SMBs and D2C brands across India.
 
-> **Current status (July 2026):** Source is complete and ready to run locally. Production Vercel deployment needs a fresh import / redeploy (previous production URL returned 404). Follow the deploy steps below to get a live demo URL.
-
 ## Tech stack
 
 - **Framework**: [TanStack Start](https://tanstack.com/start) (React + file-based routing + SSR)
@@ -73,11 +71,13 @@ src/
 - WhatsApp CTA integration throughout
 - Production-grade error boundaries and SSR error pages
 
-## Deploy to Vercel (get a live demo)
+## Deploy to Vercel
+
+Config is aligned with the official TanStack Start + Nitro + Vercel setup.
 
 1. Open [vercel.com/new](https://vercel.com/new)
 2. Import **`sairambn/naiyapudai-growth-studio`**
-3. Confirm **Framework Preset = TanStack Start** (set via `vercel.json`)
+3. Framework Preset is already set to **TanStack Start** via `vercel.json`
 4. Click **Deploy**
 
 One-click: [Import on Vercel](https://vercel.com/new/clone?repository-url=https://github.com/sairambn/naiyapudai-growth-studio)
