@@ -69,13 +69,13 @@ const services = [
 function ServicesPage() {
   return (
     <>
-      <section className="pt-16 md:pt-24 pb-12">
+      <section className="pt-16 md:pt-24 pb-12 grain-bg">
         <div className="container-page max-w-4xl">
-          <span className="eyebrow">Services</span>
-          <h1 className="h-display mt-4">
-            One studio. The whole <em className="text-terracotta not-italic">growth stack</em>.
+          <span className="protocol-num">01 — CAPABILITIES</span>
+          <h1 className="h-display mt-5">
+            One studio. The whole <em className="text-gold not-italic">growth stack</em>.
           </h1>
-          <p className="mt-6 text-lg text-muted-foreground">
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             Most agencies do one thing. We do the four things that move the needle for
             Tamil Nadu SMBs and D2C brands: the website, the search rankings, the ads,
             and the brand — all under one roof, one team, one point of accountability.
@@ -86,18 +86,18 @@ function ServicesPage() {
       <section className="py-16 md:py-24">
         <div className="container-page grid gap-6">
           {services.map((s, i) => (
-            <article key={s.title} className="card-soft p-8 md:p-12 grid md:grid-cols-12 gap-8">
+            <article key={s.title} className="card-elite p-8 md:p-12 grid md:grid-cols-12 gap-8">
               <div className="md:col-span-4">
-                <div className="font-display text-4xl text-terracotta">{String(i + 1).padStart(2, "0")}</div>
-                <h2 className="mt-3 text-2xl md:text-3xl">{s.title}</h2>
+                <div className="protocol-num text-2xl">{String(i + 1).padStart(2, "0")}</div>
+                <h2 className="mt-4 text-2xl md:text-3xl font-display">{s.title}</h2>
                 <p className="mt-2 font-tamil text-muted-foreground">{s.tamil}</p>
               </div>
               <div className="md:col-span-8">
-                <p className="text-lg">{s.lead}</p>
+                <p className="text-lg text-cream/90">{s.lead}</p>
                 <ul className="mt-6 grid sm:grid-cols-2 gap-3">
                   {s.deliverables.map((d) => (
-                    <li key={d} className="flex items-start gap-2 text-sm">
-                      <Check size={16} className="mt-0.5 text-primary shrink-0" /> {d}
+                    <li key={d} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                      <Check size={16} className="mt-0.5 text-gold shrink-0" /> {d}
                     </li>
                   ))}
                 </ul>
@@ -109,9 +109,9 @@ function ServicesPage() {
 
       <section className="py-16">
         <div className="container-page">
-          <div className="card-soft p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="card-elite p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <h2 className="text-2xl">Not sure where to start?</h2>
+              <h2 className="text-2xl font-display">Not sure where to start?</h2>
               <p className="mt-2 text-muted-foreground">Book a free 30-minute audit and we'll tell you exactly what to fix first.</p>
             </div>
             <Link to="/contact" className="btn-primary">
