@@ -1,6 +1,18 @@
 {
   "name": "naiyapudai-growth-studio",
+  "version": "1.0.0",
   "private": true,
+  "description": "Digital growth studio site for Tamil Nadu — bilingual (EN + Tamil), SEO-first, high-performance marketing site built with TanStack Start.",
+  "homepage": "https://naiyapudai.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sairambn/naiyapudai-growth-studio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sairambn/naiyapudai-growth-studio/issues"
+  },
+  "author": "Sairam BN <bnsairam14@gmail.com>",
+  "license": "MIT",
   "sideEffects": false,
   "type": "module",
   "scripts": {
@@ -9,7 +21,8 @@
     "preview": "vite preview",
     "start": "node .output/server/index.mjs",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
