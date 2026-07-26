@@ -4,7 +4,7 @@ import { useReveal } from "../lib/use-reveal";
 import { useScrollProgress } from "../lib/use-scroll-progress";
 import { WhatsAppIcon } from "../components/site-nav";
 
-/* High-res Unsplash — dark, cinematic, no stock-cliché smiles */
+/* High-res Unsplash — dark, cinematic */
 const IMG = {
   hero: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=2400&q=85",
   neon: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=85",
@@ -46,7 +46,7 @@ function HomePage() {
         eyebrow="01 — Live work"
         title="Total Fitness Studio"
         body="Chromepet gym. 4.9★ · ~798 reviews. Conversion site + Schema + Maps — our first client, shipped end to end."
-        href="/work/total-fitness-studio"
+        toWork
         cta="Open case study"
       />
       <ZoomChapter
@@ -54,7 +54,7 @@ function HomePage() {
         eyebrow="02 — Build"
         title="Sites that load like products"
         body="React 19 · TanStack Start · Tailwind v4 · Nitro. SSR, typed routes, Core Web Vitals — not templates."
-        href="/services"
+        to="/services"
         cta="See services"
         reverse
       />
@@ -63,7 +63,7 @@ function HomePage() {
         eyebrow="03 — Rank"
         title="Maps + Schema that convert"
         body="Google finds you. The page closes the call. Local SEO wired to the same source of truth as the site."
-        href="/services"
+        to="/services"
         cta="How we rank"
       />
       <ParallaxBand />
@@ -73,27 +73,20 @@ function HomePage() {
   );
 }
 
-/* ─── HERO: full-bleed image that ZOOM-OUT on scroll ─── */
 function CinematicHero() {
   const [ref, progress] = useScrollProgress<HTMLElement>({ offsetStart: 0, offsetEnd: 0.45 });
-  // start zoomed in (1.35), ease out to 1.0 as user scrolls
   const scale = 1.35 - progress * 0.35;
   const opacity = 1 - progress * 0.55;
   const textY = progress * 80;
   const vignette = 0.35 + progress * 0.35;
 
   return (
-    <section
-      ref={ref}
-      className="relative h-[165vh] bg-background"
-      aria-label="Hero"
-    >
+    <section ref={ref} className="relative h-[165vh] bg-background" aria-label="Hero">
       <div className="sticky top-0 h-[100svh] overflow-hidden">
-        {/* Image layer — GPU transform */}
         <div
           className="absolute inset-0 will-change-transform"
           style={{
-            transform: `scale(${scale})`,
+            transform: `scale3d(${scale}, ${scale}, 1)`,
             transformOrigin: "50% 40%",
           }}
         >
@@ -104,18 +97,13 @@ function CinematicHero() {
             fetchPriority="high"
             decoding="async"
           />
-          <div
-            className="absolute inset-0 bg-background"
-            style={{ opacity: vignette }}
-            aria-hidden
-          />
+          <div className="absolute inset-0 bg-background" style={{ opacity: vignette }} aria-hidden />
           <div
             className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"
             aria-hidden
           />
         </div>
 
-        {/* Copy */}
         <div
           className="relative z-10 flex h-full flex-col justify-end pb-16 md:pb-24 container-page will-change-transform"
           style={{
@@ -132,8 +120,7 @@ function CinematicHero() {
             <span className="text-gold-shine">100 ON RESULTS.</span>
           </h1>
           <p className="mt-6 max-w-lg text-base md:text-lg text-cream/70 leading-relaxed">
-            Websites. Local SEO. Google Maps. Built so traffic becomes calls —
-            not vanity metrics.
+            Websites. Local SEO. Google Maps. Built so traffic becomes calls — not vanity metrics.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
@@ -148,7 +135,6 @@ function CinematicHero() {
           </div>
         </div>
 
-        {/* Scroll hint */}
         <div
           className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[0.65rem] uppercase tracking-[0.25em] text-cream/40"
           style={{ opacity: Math.max(0, 1 - progress * 3) }}
@@ -162,10 +148,9 @@ function CinematicHero() {
   );
 }
 
-/* ─── Horizontal image strip that drifts opposite to scroll ─── */
 function ImageStrip() {
   const [ref, progress] = useScrollProgress<HTMLElement>();
-  const x = -progress * 30; // %
+  const x = -progress * 30;
 
   const shots = [
     { src: IMG.neon, label: "Systems" },
@@ -177,7 +162,11 @@ function ImageStrip() {
   ];
 
   return (
-    <section ref={ref} className="relative py-8 md:py-12 overflow-hidden border-y border-border bg-background" aria-label="Visual strip">
+    <section
+      ref={ref}
+      className="relative py-8 md:py-12 overflow-hidden border-y border-border bg-background"
+      aria-label="Visual strip"
+    >
       <div
         className="flex gap-3 md:gap-5 will-change-transform px-4"
         style={{ transform: `translate3d(${x}%, 0, 0)` }}
@@ -204,13 +193,13 @@ function ImageStrip() {
   );
 }
 
-/* ─── Zoom chapter: image scales OUT as section scrolls through ─── */
 function ZoomChapter({
   image,
   eyebrow,
   title,
   body,
-  href,
+  to,
+  toWork,
   cta,
   reverse,
 }: {
@@ -218,16 +207,26 @@ function ZoomChapter({
   eyebrow: string;
   title: string;
   body: string;
-  href: string;
+  to?: "/services" | "/work" | "/contact";
+  toWork?: boolean;
   cta: string;
   reverse?: boolean;
 }) {
   const [ref, progress] = useScrollProgress<HTMLElement>({ offsetStart: 0.1, offsetEnd: 0.75 });
-  // cross into zoomed (1.2) → settle (1.0) → slight drift
   const scale = 1.22 - progress * 0.28;
   const imgOpacity = 0.55 + Math.sin(progress * Math.PI) * 0.35;
   const textOpacity = Math.min(1, Math.max(0, (progress - 0.15) * 2.2));
   const textY = (1 - textOpacity) * 40;
+
+  const ctaEl = toWork ? (
+    <Link to="/work/$slug" params={{ slug: "total-fitness-studio" }} className="btn-accent">
+      {cta} <ArrowUpRight size={16} aria-hidden />
+    </Link>
+  ) : (
+    <Link to={to ?? "/services"} className="btn-accent">
+      {cta} <ArrowUpRight size={16} aria-hidden />
+    </Link>
+  );
 
   return (
     <section ref={ref} className="relative h-[140vh] bg-background">
@@ -236,7 +235,7 @@ function ZoomChapter({
           <div
             className="absolute inset-0 will-change-transform"
             style={{
-              transform: `scale(${scale})`,
+              transform: `scale3d(${scale}, ${scale}, 1)`,
               opacity: imgOpacity,
               transformOrigin: reverse ? "30% 50%" : "70% 50%",
             }}
@@ -249,8 +248,14 @@ function ZoomChapter({
               decoding="async"
             />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/20" aria-hidden />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/50" aria-hidden />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-background/20"
+            aria-hidden
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/50"
+            aria-hidden
+          />
         </div>
 
         <div
@@ -265,22 +270,13 @@ function ZoomChapter({
           <p className={`mt-5 max-w-md text-cream/65 leading-relaxed ${reverse ? "md:ml-auto" : ""}`}>
             {body}
           </p>
-          <div className={`mt-8 ${reverse ? "md:flex md:justify-end" : ""}`}>
-            <Link
-              to={href.startsWith("/work/") ? "/work/$slug" : (href as "/services" | "/work")}
-              params={href.startsWith("/work/") ? { slug: "total-fitness-studio" } : undefined}
-              className="btn-accent"
-            >
-              {cta} <ArrowUpRight size={16} aria-hidden />
-            </Link>
-          </div>
+          <div className={`mt-8 ${reverse ? "md:flex md:justify-end" : ""}`}>{ctaEl}</div>
         </div>
       </div>
     </section>
   );
 }
 
-/* ─── Tall parallax band with dual images ─── */
 function ParallaxBand() {
   const [ref, progress] = useScrollProgress<HTMLElement>();
   const yA = progress * -12;
@@ -289,15 +285,31 @@ function ParallaxBand() {
   return (
     <section ref={ref} className="relative py-24 md:py-32 overflow-hidden">
       <div className="container-page grid md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-        <div className="relative aspect-[3/4] overflow-hidden rounded-3xl will-change-transform" style={{ transform: `translate3d(0, ${yA}%, 0)` }}>
-          <img src={IMG.neon} alt="" className="absolute inset-0 h-[120%] w-full object-cover -top-[10%]" loading="lazy" />
+        <div
+          className="relative aspect-[3/4] overflow-hidden rounded-3xl will-change-transform"
+          style={{ transform: `translate3d(0, ${yA}%, 0)` }}
+        >
+          <img
+            src={IMG.neon}
+            alt=""
+            className="absolute inset-0 h-[120%] w-full object-cover -top-[10%]"
+            loading="lazy"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <p className="absolute bottom-6 left-6 right-6 font-display text-2xl md:text-3xl font-bold text-cream">
             Performance is the brand.
           </p>
         </div>
-        <div className="relative aspect-[3/4] overflow-hidden rounded-3xl will-change-transform md:mt-16" style={{ transform: `translate3d(0, ${yB}%, 0)` }}>
-          <img src={IMG.city} alt="" className="absolute inset-0 h-[120%] w-full object-cover -top-[10%]" loading="lazy" />
+        <div
+          className="relative aspect-[3/4] overflow-hidden rounded-3xl will-change-transform md:mt-16"
+          style={{ transform: `translate3d(0, ${yB}%, 0)` }}
+        >
+          <img
+            src={IMG.city}
+            alt=""
+            className="absolute inset-0 h-[120%] w-full object-cover -top-[10%]"
+            loading="lazy"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <p className="absolute bottom-6 left-6 right-6 font-display text-2xl md:text-3xl font-bold text-cream">
             Built for Tamil Nadu search.
@@ -308,7 +320,6 @@ function ParallaxBand() {
   );
 }
 
-/* ─── Service cards with image backs ─── */
 function ServicesGrid() {
   const ref = useReveal<HTMLDivElement>();
   const items = [
@@ -362,7 +373,7 @@ function FinalCta() {
       <div className="sticky top-0 h-[100svh] overflow-hidden flex items-center justify-center">
         <div
           className="absolute inset-0 will-change-transform"
-          style={{ transform: `scale(${scale})` }}
+          style={{ transform: `scale3d(${scale}, ${scale}, 1)` }}
         >
           <img src={IMG.night} alt="" className="h-full w-full object-cover" loading="lazy" />
           <div className="absolute inset-0 bg-background/75" />
