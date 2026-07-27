@@ -77,7 +77,7 @@ function WorkPage() {
                     <div className="mt-2.5 text-muted-foreground text-sm">{c.metricLabel}</div>
                   </div>
                 </div>
-                <div className="absolute top-6 right-6 h-11 w-11 rounded-full border border-cream/15 bg-cream/5 backdrop-blur grid place-items-center text-cream group-hover:bg-gold group-hover:text-ink group-hover:border-gold transition-all duration-400">
+                <div className="absolute top-6 right-6 h-11 w-11 rounded-full border border-cream/15 bg-cream/5 backdrop-blur grid place-items-center text-cream group-hover:bg-gold group-hover:text-ink group-hover:border-gold transition-all duration-300">
                   <ArrowUpRight size={17} />
                 </div>
               </div>

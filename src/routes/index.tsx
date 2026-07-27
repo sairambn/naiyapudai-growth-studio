@@ -192,14 +192,7 @@ function CinematicHero() {
 
 function HighlightsStrip() {
   const ref = useReveal<HTMLDivElement>();
-  const items = [
-    { label: "Active Noise Cancellation", value: "World’s best in-ear" },
-    { label: "Core Web Vitals", value: "90+ on day one" },
-    { label: "Local ranking", value: "Maps + Schema" },
-    { label: "Accountability", value: "CAC, not vanity" },
-  ];
 
-  // Apple-style sparse highlight row — adapted for studio
   const studioItems = [
     { k: "Web", v: "SSR that ranks" },
     { k: "SEO", v: "Technical + local" },
@@ -462,7 +455,7 @@ function ServicesGrid() {
               <img
                 src={it.img}
                 alt=""
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-800 group-hover:scale-110"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />

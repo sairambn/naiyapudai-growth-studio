@@ -32,7 +32,7 @@ export function SiteNav() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-600 ${
+      className={`sticky top-0 z-40 transition-all duration-500 ${
         scrolled
           ? "backdrop-blur-2xl bg-background/75 border-b border-border/80 shadow-[0_1px_0_0_color-mix(in_oklab,var(--gold)_6%,transparent)]"
           : "bg-transparent"
@@ -53,7 +53,7 @@ export function SiteNav() {
             <Link
               key={l.to}
               to={l.to}
-              className="px-3.5 py-2 text-[0.8125rem] text-muted-foreground hover:text-cream transition-colors relative after:absolute after:bottom-1 after:left-3.5 after:right-3.5 after:h-px after:bg-gold after:scale-x-0 after:origin-left after:transition-transform after:duration-350 hover:after:scale-x-100"
+              className="px-3.5 py-2 text-[0.8125rem] text-muted-foreground hover:text-cream transition-colors relative after:absolute after:bottom-1 after:left-3.5 after:right-3.5 after:h-px after:bg-gold after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
               activeProps={{ className: "text-cream after:scale-x-100" }}
             >
               {l.label}
