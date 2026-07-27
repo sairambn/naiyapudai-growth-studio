@@ -48,19 +48,19 @@ export const CASES = [
 function WorkPage() {
   return (
     <>
-      <section className="pt-16 md:pt-24 pb-8 grain-bg">
-        <div className="container-page max-w-4xl">
-          <span className="protocol-num">02 — SELECTED WORK</span>
-          <h1 className="h-display mt-5">Proof over placeholders.</h1>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Our first client engagement — Total Fitness Studio, Chromepet. Website, local SEO,
-            and Google Maps optimization under one roof.
+      <section className="pt-20 md:pt-28 pb-10 grain-bg">
+        <div className="container-page max-w-3xl">
+          <span className="protocol-num">02 — Selected work</span>
+          <h1 className="h-display mt-6">Proof over placeholders.</h1>
+          <p className="mt-7 text-lg text-muted-foreground leading-relaxed max-w-xl">
+            Our first client engagement — Total Fitness Studio, Chromepet. Website, local SEO, and
+            Google Maps under one roof.
           </p>
         </div>
       </section>
 
-      <section className="pb-24">
-        <div className="container-page grid gap-6 md:grid-cols-1 max-w-3xl">
+      <section className="pb-28">
+        <div className="container-page grid gap-6 max-w-3xl">
           {CASES.map((c) => (
             <Link
               key={c.slug}
@@ -69,20 +69,26 @@ function WorkPage() {
               className="group card-elite overflow-hidden flex flex-col"
             >
               <div className="aspect-[16/9] relative grain-bg bg-gradient-to-br from-surface-2 to-background">
-                <div className="absolute inset-0 flex items-end p-8">
+                <div className="absolute inset-0 flex items-end p-8 md:p-10">
                   <div>
-                    <div className="font-display text-6xl leading-none text-cream">{c.metric}</div>
-                    <div className="mt-2 text-muted-foreground">{c.metricLabel}</div>
+                    <div className="font-display text-5xl md:text-6xl leading-none text-cream tracking-tight">
+                      {c.metric}
+                    </div>
+                    <div className="mt-2.5 text-muted-foreground text-sm">{c.metricLabel}</div>
                   </div>
                 </div>
-                <div className="absolute top-6 right-6 h-11 w-11 rounded-full border border-cream/20 bg-cream/5 backdrop-blur grid place-items-center text-cream group-hover:bg-gold group-hover:text-ink group-hover:border-gold transition-all duration-400">
-                  <ArrowUpRight size={18} />
+                <div className="absolute top-6 right-6 h-11 w-11 rounded-full border border-cream/15 bg-cream/5 backdrop-blur grid place-items-center text-cream group-hover:bg-gold group-hover:text-ink group-hover:border-gold transition-all duration-400">
+                  <ArrowUpRight size={17} />
                 </div>
               </div>
-              <div className="p-8">
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">{c.industry}</div>
-                <div className="mt-2 text-2xl font-display">{c.client}</div>
-                <p className="mt-3 text-sm text-muted-foreground line-clamp-2">{c.challenge}</p>
+              <div className="p-8 md:p-10">
+                <div className="text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+                  {c.industry}
+                </div>
+                <div className="mt-2.5 text-2xl font-display tracking-tight">{c.client}</div>
+                <p className="mt-3.5 text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                  {c.challenge}
+                </p>
               </div>
             </Link>
           ))}

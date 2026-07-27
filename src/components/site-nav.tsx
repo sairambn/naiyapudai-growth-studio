@@ -16,24 +16,34 @@ export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (open) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-500 ${
+      className={`sticky top-0 z-40 transition-all duration-600 ${
         scrolled
-          ? "backdrop-blur-xl bg-background/80 border-b border-border shadow-[0_1px_0_0_color-mix(in_oklab,var(--gold)_8%,transparent)]"
+          ? "backdrop-blur-2xl bg-background/75 border-b border-border/80 shadow-[0_1px_0_0_color-mix(in_oklab,var(--gold)_6%,transparent)]"
           : "bg-transparent"
       }`}
     >
-      <div className="container-page flex items-center justify-between py-4">
+      <div className="container-page flex items-center justify-between py-4 md:py-[1.15rem]">
         <Link to="/" className="flex items-baseline gap-2.5 group" aria-label="Naiyapudai home">
-          <span className="font-display text-2xl tracking-tight text-cream group-hover:text-gold-shine transition-all duration-500">Naiyapudai</span>
-          <span className="font-tamil text-base text-gold/85 group-hover:text-gold transition-colors">
+          <span className="font-display text-[1.35rem] md:text-2xl tracking-tight text-cream group-hover:text-gold-shine transition-all duration-500">
+            Naiyapudai
+          </span>
+          <span className="font-tamil text-[0.95rem] md:text-base text-gold/80 group-hover:text-gold transition-colors">
             நையப்புடை
           </span>
         </Link>
@@ -43,7 +53,7 @@ export function SiteNav() {
             <Link
               key={l.to}
               to={l.to}
-              className="px-3.5 py-2 text-sm text-muted-foreground hover:text-cream transition-colors relative after:absolute after:bottom-1 after:left-3.5 after:right-3.5 after:h-px after:bg-gold after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+              className="px-3.5 py-2 text-[0.8125rem] text-muted-foreground hover:text-cream transition-colors relative after:absolute after:bottom-1 after:left-3.5 after:right-3.5 after:h-px after:bg-gold after:scale-x-0 after:origin-left after:transition-transform after:duration-350 hover:after:scale-x-100"
               activeProps={{ className: "text-cream after:scale-x-100" }}
             >
               {l.label}
@@ -52,8 +62,12 @@ export function SiteNav() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a href="https://wa.me/917603976686" className="btn-accent text-sm !py-2.5 !px-5" aria-label="Chat with us on WhatsApp">
-            <WhatsAppIcon /> WhatsApp us
+          <a
+            href="https://wa.me/917603976686"
+            className="btn-accent text-[0.8125rem] !py-2.5 !px-5"
+            aria-label="Chat with us on WhatsApp"
+          >
+            <WhatsAppIcon size={14} /> WhatsApp us
           </a>
         </div>
 
@@ -68,19 +82,19 @@ export function SiteNav() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
-          <div className="container-page py-5 flex flex-col gap-1">
+        <div className="md:hidden fixed inset-0 top-[4.25rem] z-30 border-t border-border bg-background/98 backdrop-blur-2xl">
+          <div className="container-page py-6 flex flex-col gap-0.5 h-full">
             {links.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 onClick={() => setOpen(false)}
-                className="py-3.5 px-2 text-base border-b border-border/50 text-cream"
+                className="py-4 px-1 text-lg border-b border-border/40 text-cream font-display tracking-tight"
               >
                 {l.label}
               </Link>
             ))}
-            <a href="https://wa.me/917603976686" className="btn-accent mt-5 justify-center">
+            <a href="https://wa.me/917603976686" className="btn-accent mt-8 justify-center">
               <WhatsAppIcon /> WhatsApp us
             </a>
           </div>
