@@ -4,7 +4,7 @@
 
 **நையப்புடை** — Digital growth studio for Tamil Nadu
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-naiyapudai.vercel.app-black?style=for-the-badge&logo=vercel)](https://naiyapudai.vercel.app/)
+[![Live](https://img.shields.io/badge/Live-naiyapudai.vercel.app-black?style=for-the-badge&logo=vercel)](https://naiyapudai.vercel.app/)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![TanStack Start](https://img.shields.io/badge/TanStack-Start-FF4154?style=flat-square)](https://tanstack.com/start)
@@ -20,18 +20,18 @@
 
 ## What Naiyapudai does
 
-We design and develop high-performance websites, rank them on Google Search and Maps, and run performance marketing that converts traffic into customers for SMBs and local brands.
+High-performance websites, Google Search and Maps ranking, and performance marketing that turns traffic into customers for local brands.
 
 | Capability | Focus |
 |------------|--------|
-| **Web design & development** | Fast, SEO-ready sites with strong Core Web Vitals |
-| **SEO & Google Maps** | Technical SEO, GBP / local ranking, Schema.org |
+| **Web design and development** | Fast, SEO-ready sites with strong Core Web Vitals |
+| **SEO and Google Maps** | Technical SEO, GBP / local ranking, Schema.org |
 | **Performance marketing** | Meta and Google Ads with clear CAC accountability |
-| **Branding & social** | Identity systems and short-form content |
+| **Branding and social** | Identity systems and short-form content |
 
-The site is bilingual-ready (English + Tamil), mobile-first, and built with production-grade SEO, accessibility, and error handling.
+Bilingual-ready (English + Tamil), mobile-first, production SEO, accessibility, and error handling.
 
-> **Company property of Naiyapudai** (Sairam BN). Not open source.
+> Company property of Naiyapudai (Sairam BN). Not open source.
 
 ---
 
@@ -39,7 +39,7 @@ The site is bilingual-ready (English + Tamil), mobile-first, and built with prod
 
 ### Total Fitness Studio — Unisex gym, Chromepet / Hasthinapuram
 
-**Deliverables:** SSR marketing site · Schema.org `GymAndFitnessClub` · geo meta · tel/WhatsApp CTAs · Google Business Profile & Maps alignment
+**Deliverables:** SSR marketing site · Schema.org `GymAndFitnessClub` · geo meta · tel/WhatsApp CTAs · Google Business Profile and Maps alignment
 
 | | |
 |---|---|
@@ -58,7 +58,7 @@ The site is bilingual-ready (English + Tamil), mobile-first, and built with prod
 | Language | TypeScript |
 | Styling | Tailwind CSS v4 with custom design tokens |
 | Components | Radix UI (shadcn-style) |
-| Build | Vite 8 |
+| Build | Vite |
 | Runtime / Deploy | Nitro · Vercel |
 
 ---
@@ -68,21 +68,21 @@ The site is bilingual-ready (English + Tamil), mobile-first, and built with prod
 ```bash
 git clone https://github.com/sairambn/naiyapudai-growth-studio.git
 cd naiyapudai-growth-studio
-bun install          # or: npm install
-bun run dev          # http://localhost:3000
+bun install
+bun run dev
 ```
 
 | Script | Description |
 |--------|-------------|
-| `bun run dev` | Start development server |
-| `bun run build` | Create production build |
-| `bun run preview` | Preview production build locally |
+| `bun run dev` | Development server |
+| `bun run build` | Production build |
+| `bun run preview` | Preview production build |
 | `bun run start` | Run production server |
-| `bun run lint` | Run ESLint |
-| `bun run format` | Format with Prettier |
+| `bun run lint` | ESLint |
+| `bun run format` | Prettier |
 | `bun run typecheck` | TypeScript check |
 
-> Requires [Bun](https://bun.sh) or Node 20+.
+Requires [Bun](https://bun.sh) or Node 20+.
 
 ---
 
@@ -98,7 +98,7 @@ src/
 │   ├── index.tsx        # Home
 │   ├── about.tsx
 │   ├── services.tsx
-│   ├── work.tsx         # Case studies (Total Fitness)
+│   ├── work.tsx         # Case studies
 │   ├── work.$slug.tsx
 │   ├── process.tsx
 │   ├── blog.tsx
@@ -113,8 +113,6 @@ src/
 
 ## Deployment
 
-### Vercel (recommended)
-
 1. Import at [vercel.com/new](https://vercel.com/new)
 2. Framework preset: **TanStack Start** (`vercel.json`)
 3. Deploy
@@ -123,19 +121,19 @@ src/
 
 ---
 
-## Quality & SEO
+## Quality and SEO
 
 - JSON-LD, meta tags, sitemap, canonical URLs
 - Accessibility: skip link, focus management, semantic markup
 - Error handling: production boundaries and SSR fallbacks
 - Motion: reduced-motion support
-- Client work emphasizes local SEO + Google Maps (see Total Fitness case study)
+- Client work emphasizes local SEO and Google Maps
 
 ---
 
 ## License
 
 **Proprietary.** All rights reserved © Naiyapudai / Sairam BN.  
-See [LICENSE](./LICENSE). Unauthorized use or redistribution is prohibited.
+See [LICENSE](./LICENSE).
 
 Maintained by [@sairambn](https://github.com/sairambn).
