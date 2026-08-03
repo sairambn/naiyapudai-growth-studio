@@ -47,7 +47,17 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border relative">
         <div className="container-page py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Naiyapudai · நையப்புடை. All rights reserved.</p>
+          <p>
+            Designed and crafted by{" "}
+            <a
+              href="https://bnsairam.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold hover:underline"
+            >
+              Sairam BN
+            </a>
+          </p>
           <p className="font-tamil text-gold/60">உங்கள் வணிகத்தை இணையத்தில் நையப்புடை</p>
         </div>
       </div>
