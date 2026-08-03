@@ -77,16 +77,16 @@ export function useScrollProgress<T extends HTMLElement = HTMLElement>(options?:
       raf = requestAnimationFrame(tick);
     };
 
-    const onScroll = () => read();
     read();
     raf = requestAnimationFrame(tick);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
+    window.addEventListener("scroll", read, { passive: true });
+    window.addEventListener("resize", read, { passive: true });
+
     return () => {
       running = false;
       cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", read);
+      window.removeEventListener("resize", read);
     };
   }, [start, end, lerpAmt, reactive]);
 
@@ -99,12 +99,11 @@ export function useScrollProgress<T extends HTMLElement = HTMLElement>(options?:
  */
 export function useScrollLayers<T extends HTMLElement = HTMLElement>(options?: { lerp?: number }) {
   const sectionRef = useRef<T | null>(null);
-  const layersRef = useRef<
-    Array<{
-      el: HTMLElement;
-      map: (p: number) => { transform?: string; opacity?: number };
-    }
-  >([]);
+  type Layer = {
+    el: HTMLElement;
+    map: (p: number) => { transform?: string; opacity?: number };
+  };
+  const layersRef = useRef<Layer[]>([]);
 
   const register = (
     el: HTMLElement | null,
