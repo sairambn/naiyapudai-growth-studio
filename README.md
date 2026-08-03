@@ -136,4 +136,4 @@ src/
 **Proprietary.** All rights reserved © Naiyapudai / Sairam BN.  
 See [LICENSE](./LICENSE).
 
-Maintained by [@sairambn](https://github.com/sairambn).
+Maintained by [@sairambn](https://github.com/sairambn) · **SR**
