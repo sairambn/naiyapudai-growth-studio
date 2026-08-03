@@ -100,7 +100,7 @@ function CaseStudy() {
           <div>
             <span className="protocol-num">WHAT WE SHIPPED</span>
             <div className="mt-8 grid sm:grid-cols-2 gap-4">
-              {("results" in c && c.results ? c.results : []).map((m) => (
+              {("results" in c && c.results ? c.results : []).map((m: { k: string; v: string }) => (
                 <div key={m.v} className="card-elite p-6">
                   <div className="font-display text-3xl text-gold">{m.k}</div>
                   <div className="mt-2 text-sm text-muted-foreground">{m.v}</div>
