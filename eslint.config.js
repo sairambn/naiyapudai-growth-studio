@@ -34,6 +34,8 @@ export default tseslint.config(
       ],
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "@typescript-eslint/no-unused-vars": "off",
+      // Formatting noise must not block CI; keep as warnings and fix via `bun run format`
+      "prettier/prettier": "warn",
     },
   },
   eslintPluginPrettier,
